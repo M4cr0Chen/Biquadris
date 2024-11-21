@@ -1,6 +1,6 @@
 #include "game.h"
-#include "textObserver.h"
-#include "graphicsObserver.h"
+#include "textobserver.h"
+#include "graphicsobserver.h"
 
 void Game::initGame() {}
 
