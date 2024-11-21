@@ -1,11 +1,11 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
 
-class Observer {
+class Observer
+{
 public:
     virtual ~Observer() = default;
-    virtual void update() = 0;
+    virtual void drawBoard() = 0;
 };
-
 
 #endif

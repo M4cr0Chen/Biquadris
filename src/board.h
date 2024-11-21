@@ -12,7 +12,12 @@ private:
     std::vector<std::vector<std::unique_ptr<Cell>>> grid;
     std::vector<std::unique_ptr<Block>> activeBlocks;
 
+    char nextBlockType;
+
 public:
+    Board();
+    Cell &getCell(int x, int y);
+    char getNextBlockType();
 };
 
 #endif

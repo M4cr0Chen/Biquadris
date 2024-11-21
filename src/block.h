@@ -9,6 +9,12 @@ class Block
 {
 private:
     std::vector<Cell *> cells;
+
+    char blockType;
+
+public:
+    Block(char blockType);
+    char getBlockType();
 };
 
 #endif

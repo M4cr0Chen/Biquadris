@@ -15,7 +15,7 @@ private:
 public:
     GraphicsObserver(Game &game);
 
-    void update() override;
+    void drawBoard() override;
     ~GraphicsObserver() override;
 };
 

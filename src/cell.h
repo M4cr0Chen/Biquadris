@@ -9,10 +9,13 @@ private:
     bool filled;
 
 public:
+    Cell(int x, int y, char type = ' ');
     int getX();
+    void setX(int x);
     int getY();
-    int setCoordinate(int x, int y);
-    int getType();
+    void setY(int y);
+    void setCoordinate(int x, int y);
+    char getCellType();
     bool isFilled();
 };
 
