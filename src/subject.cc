@@ -16,3 +16,9 @@ void Subject::detach(std::unique_ptr<Observer> o)
         }
     }
 }
+
+void Subject::notifyObservers() {
+    for (auto &o : observers) {
+        o->drawBoard();
+    }
+}

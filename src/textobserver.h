@@ -11,11 +11,11 @@ class TextObserver : public Observer
 {
 private:
     void printLevel();
-    void printCurrentScore() {}
-    void printHighScore() {}
-    void printPlayersBoard() {}
-    void printDividerLine() {}
-    void printNextBlock() {}
+    void printCurrentScore();
+    void printHighScore();
+    void printPlayersBoard();
+    void printDividerLine();
+    void printNextBlock();
 
 protected:
     Game &game;

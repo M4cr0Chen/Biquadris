@@ -9,7 +9,7 @@ class Level;
 class Player
 {
 private:
-    std::unique_ptr<Level> level;
+    //std::unique_ptr<Level> level;
     Board board;
     int levelNum;
     Score score;

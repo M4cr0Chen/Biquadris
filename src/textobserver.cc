@@ -8,7 +8,8 @@ void TextObserver::printLevel()
     int playerOneLevel = game.getPlayerOne()->getLevel();
     int playerTwoLevel = game.getPlayerTwo()->getLevel();
 
-    std::cout << "Level: " << playerOneLevel << "       " << playerTwoLevel << std::endl;
+    std::cout << "Level:    " << playerOneLevel << "       ";
+    std::cout << "Level:    " << playerTwoLevel << std::endl;
 }
 
 void TextObserver::printCurrentScore()
@@ -16,7 +17,8 @@ void TextObserver::printCurrentScore()
     int playerOneCurrentScore = game.getPlayerOne()->getScore().getCurrentScore();
     int playerTwoCurrentScore = game.getPlayerTwo()->getScore().getCurrentScore();
 
-    std::cout << "Score: " << playerOneCurrentScore << "       " << playerTwoCurrentScore << std::endl;
+    std::cout << "Score:    " << playerOneCurrentScore << "       ";
+    std::cout << "Score:    " << playerTwoCurrentScore << std::endl;
 }
 
 void TextObserver::printHighScore()
@@ -24,7 +26,8 @@ void TextObserver::printHighScore()
     int playerOneHighScore = game.getPlayerOne()->getScore().getHighScore();
     int playerTwoHighScore = game.getPlayerTwo()->getScore().getHighScore();
 
-    std::cout << "High Score: " << playerOneHighScore << "       " << playerTwoHighScore << std::endl;
+    std::cout << "Hi Score: " << playerOneHighScore << "       ";
+    std::cout << "Hi Score: " << playerTwoHighScore << std::endl;
 }
 
 void TextObserver::printPlayersBoard()

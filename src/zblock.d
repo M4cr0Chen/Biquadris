@@ -1,0 +1,1 @@
+zblock.o: zblock.cc

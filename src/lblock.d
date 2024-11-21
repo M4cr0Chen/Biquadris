@@ -1,0 +1,1 @@
+lblock.o: lblock.cc

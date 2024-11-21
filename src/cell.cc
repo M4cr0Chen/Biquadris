@@ -1,6 +1,6 @@
 #include "cell.h"
 
-Cell::Cell(int x, int y, char type = ' ') : xCoordinate{x}, yCoordinate{y}, type{type} {}
+Cell::Cell(int x, int y, char type) : xCoordinate{x}, yCoordinate{y}, type{type} {}
 
 int Cell::getX()
 {

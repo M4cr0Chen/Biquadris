@@ -1,0 +1,1 @@
+oblock.o: oblock.cc

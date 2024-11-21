@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "subject.h"
+#include "player.h"
 
 // Forward declarations
 class Player;
@@ -23,7 +24,7 @@ private:
 
 public:
     Game();
-    ~Game();
+    ~Game() = default;
     void runGame();
     void restartGame();
     void switchTurn();
@@ -31,8 +32,8 @@ public:
 
     // Getters & Setters
     bool getIsGameOver() const;
-    std::unique_ptr<Player> &getPlayerOne();
-    std::unique_ptr<Player> &getPlayerTwo();
+    Player *getPlayerOne();
+    Player *getPlayerTwo();
 };
 
 #endif

@@ -16,3 +16,11 @@ void Game::updateGameDisplay()
 {
     notifyObservers();
 }
+
+Player * Game::getPlayerOne() {
+    return playerOne.get();
+}
+
+Player * Game::getPlayerTwo() {
+    return playerTwo.get();
+}

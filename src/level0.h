@@ -5,6 +5,7 @@
 
 class Level0 : public Level
 {
+    int index;
 public:
     Level0();
     ~Level0();
