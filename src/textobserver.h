@@ -10,8 +10,6 @@ class Game;
 class TextObserver : public Observer
 {
 private:
-    // Subject &subject;
-
     void printLevel();
     void printCurrentScore() {}
     void printHighScore() {}

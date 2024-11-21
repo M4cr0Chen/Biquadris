@@ -6,7 +6,7 @@ class Cell
 private:
     int xCoordinate, yCoordinate;
     char type;
-    bool filled;
+    // bool filled;
 
 public:
     Cell(int x, int y, char type = ' ');

@@ -136,7 +136,10 @@ void TextObserver::printNextBlock()
     }
 }
 
-TextObserver::TextObserver(Game &game) : game(game) {}
+TextObserver::TextObserver(Game &game) : game(game)
+{
+    game.attach(std::unique_ptr<Observer>(this));
+}
 
 void TextObserver::drawBoard()
 {

@@ -1,6 +1,6 @@
 #include "cell.h"
 
-Cell::Cell(int x, int y, char type = ' ') : xCoordinate(x), yCoordinate(y), type(type), filled(false) {}
+Cell::Cell(int x, int y, char type = ' ') : xCoordinate{x}, yCoordinate{y}, type{type} {}
 
 int Cell::getX()
 {
@@ -19,7 +19,7 @@ char Cell::getCellType()
 
 bool Cell::isFilled()
 {
-    return filled;
+    return type == ' ';
 }
 
 void Cell::setCoordinate(int x, int y)

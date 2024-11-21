@@ -18,8 +18,8 @@ private:
     std::unique_ptr<Player> playerOne;
     std::unique_ptr<Player> playerTwo;
 
-    std::unique_ptr<Observer> textObserver;
-    std::unique_ptr<Observer> graphicsObserver;
+    // std::unique_ptr<Observer> textObserver;
+    // std::unique_ptr<Observer> graphicsObserver;
 
 public:
     Game();
@@ -27,6 +27,7 @@ public:
     void runGame();
     void restartGame();
     void switchTurn();
+    void updateGameDisplay();
 
     // Getters & Setters
     bool getIsGameOver() const;
