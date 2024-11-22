@@ -7,12 +7,12 @@ class IBlock : public Block
 {
 public:
     IBlock(int level);
-    bool moveLeft();
-    bool moveRight();
-    bool moveDown();
-    void drop();
-    bool rotateClockwise();
-    bool rotateCounterClockwise();
+    bool moveLeft() override;
+    bool moveRight() override;
+    bool moveDown() override;
+    void drop() override;
+    bool rotateClockwise() override;
+    bool rotateCounterClockwise() override;
 };
 
 #endif

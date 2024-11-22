@@ -58,3 +58,8 @@ void Block::takeoverCells(std::vector<Cell *> &newCells)
 {
     cells = newCells;
 }
+
+int Block::getLevel()
+{
+    return level;
+}

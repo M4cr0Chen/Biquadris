@@ -19,12 +19,12 @@ private:
 
 public:
     virtual ~Block() = default;
-    virtual bool moveLeft();
-    virtual bool moveRight();
-    virtual bool moveDown();
-    virtual void drop();
-    virtual bool rotateClockwise();
-    virtual bool rotateCounterClockwise();
+    virtual bool moveLeft() = 0;
+    virtual bool moveRight() = 0;
+    virtual bool moveDown() = 0;
+    virtual void drop() = 0;
+    virtual bool rotateClockwise() = 0;
+    virtual bool rotateCounterClockwise() = 0;
     std::vector<Cell *> getCells() const;
     Board *getBoard() const;
     // std::vector<Cell *> getProjectedCells(char dir) const;

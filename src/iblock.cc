@@ -13,3 +13,15 @@ IBlock::IBlock(int level)
     cells.emplace_back(board->getCellAt(3, 3));
     bottomLeftCell = cells[0];
 }
+
+bool IBlock::moveLeft() {}
+
+bool IBlock::moveRight() {}
+
+bool IBlock::moveDown() {}
+
+void IBlock::drop() {}
+
+bool IBlock::rotateClockwise() {}
+
+bool IBlock::rotateCounterClockwise() {}
