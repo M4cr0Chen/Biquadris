@@ -5,6 +5,9 @@
 #include <memory>
 
 #include "block.h"
+#include "cell.h"
+
+class Block;
 
 class Board
 {

@@ -18,12 +18,12 @@ void Player::setLevel(int levelNum)
     }
 }
 
-// int Player::getLevel()
-// {
-//     return levelNum;
-// }
+int Player::getIntLevel()
+{
+    return levelNum;
+}
 
-Level *Player::getLevel()
+Level *Player::getPtrLevel()
 {
     return level.get();
 }

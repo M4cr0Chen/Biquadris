@@ -18,8 +18,8 @@ private:
 public:
     Player();
     void setLevel(int levelNum);
-    //int getLevel();
-    Level *getLevel();
+    int getIntLevel();
+    Level *getPtrLevel();
     Score &getScore();
     Board &getBoard();
 };

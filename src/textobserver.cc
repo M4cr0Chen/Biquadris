@@ -5,8 +5,8 @@
 
 void TextObserver::printLevel()
 {
-    int playerOneLevel = game.getPlayerOne()->getLevel();
-    int playerTwoLevel = game.getPlayerTwo()->getLevel();
+    int playerOneLevel = game.getPlayerOne()->getIntLevel();
+    int playerTwoLevel = game.getPlayerTwo()->getIntLevel();
 
     std::cout << "Level:    " << playerOneLevel << "       ";
     std::cout << "Level:    " << playerTwoLevel << std::endl;
@@ -39,12 +39,12 @@ void TextObserver::printPlayersBoard()
     {
         for (int j = 0; j < 11; j++)
         {
-            std::cout << playerOneBoard.getCell(i, j).getCellType();
+            std::cout << playerOneBoard.getCellAt(i, j)->getCellType();
         }
         std::cout << "       ";
         for (int j = 0; j < 11; j++)
         {
-            std::cout << playerTwoBoard.getCell(i, j).getCellType();
+            std::cout << playerTwoBoard.getCellAt(i, j)->getCellType();
         }
         std::cout << std::endl;
     }

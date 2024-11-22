@@ -6,6 +6,8 @@
 #include "board.h"
 #include "cell.h"
 
+class Board;
+
 class Block
 {
 private:
