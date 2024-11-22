@@ -9,4 +9,5 @@ int main(int argc, char *argv[])
 
     game.updateGameDisplay();
     game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('I', 0));
+    game.updateGameDisplay();
 }

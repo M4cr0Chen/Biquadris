@@ -17,6 +17,11 @@ char Cell::getCellType()
     return type;
 }
 
+void Cell::setCellType(char type)
+{
+    this->type = type;
+}
+
 bool Cell::isFilled()
 {
     return type == ' ';

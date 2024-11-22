@@ -15,8 +15,8 @@
 class Level
 {
 public:
-    virtual std::unique_ptr<Block> generateBlock(char blockType, int level);
-    virtual ~Level() = default;
+    virtual std::unique_ptr<Block> generateBlock(char blockType, int level) = 0;
+    ~Level() = default;
 };
 
 #endif
