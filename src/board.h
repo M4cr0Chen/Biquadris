@@ -14,10 +14,15 @@ private:
 
     char nextBlockType;
 
+    std::vector<Cell *> getMoveProjectedCells(const Block *block, char dir) const;
+    std::vector<Cell *> getRotateProjectedCells(const Block *block, char dir) const;
+
 public:
     Board();
-    Cell &getCell(int x, int y);
+    Cell *getCellAt(int x, int y);
     char getNextBlockType();
+    void addBlock(std::unique_ptr<Block> block);
+    void changeBlock(Block *block);
 };
 
 #endif

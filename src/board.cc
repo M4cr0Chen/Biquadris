@@ -1,6 +1,7 @@
 #include "board.h"
 
-Board::Board() : nextBlockType{' '} {
+Board::Board() : nextBlockType{' '}
+{
     grid.resize(18);
     for (int i = 0; i < 18; i++)
     {
@@ -10,15 +11,19 @@ Board::Board() : nextBlockType{' '} {
             grid[i][j] = std::make_unique<Cell>(i, j, ' ');
         }
     }
-
 }
 
-Cell &Board::getCell(int x, int y)
+Cell *Board::getCellAt(int x, int y)
 {
-    return *grid[x][y];
+    return grid[x][y].get();
 }
 
 char Board::getNextBlockType()
 {
     return nextBlockType;
+}
+
+void Board::addBlock(std::unique_ptr<Block> block)
+{
+    activeBlocks.emplace_back(std::move(block));
 }

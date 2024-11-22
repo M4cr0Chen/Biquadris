@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "board.h"
 #include "cell.h"
 
 class Block
@@ -10,43 +11,28 @@ class Block
 private:
     std::vector<Cell *> cells;
     Cell *bottomLeftCell;
+    Board *board;
     char blockType;
     int level;
-    bool heavy;
 
 public:
-    // Destructor
     virtual ~Block() = default;
-
-    // Movement methods
     virtual bool moveLeft();
     virtual bool moveRight();
     virtual bool moveDown();
     virtual void drop();
-
-    // Rotation methods
     virtual bool rotateClockwise();
     virtual bool rotateCounterClockwise();
-
-    // Position and state queries
     std::vector<Cell *> getCells() const;
-    std::vector<Cell *> getProjectedCells(char dir) const;
+    Board *getBoard() const;
+    // std::vector<Cell *> getProjectedCells(char dir) const;
     char getBlockType() const;
+    void setBlockType(char type);
+    int getLevel();
+    void setLevel(int level);
     bool isAtBottom() const;
-
-    // Cell manipulation
-    void clearCells();
-    bool occupyCells(const std::vector<Cell *> &newCells);
-
-    // For rotation calculations
-    std::pair<int, int> getAnchorPosition() const;
-    void setAnchorPosition(int x, int y);
-
-    // For level effects
-    bool isHeavy() const;
-    void setHeavy(bool heavy);
-
-    // update
+    void takeoverCells(std::vector<Cell *> &newCells);
+    Cell *getBottomLeftCell();
     int updateBlock();
 };
 

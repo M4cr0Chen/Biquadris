@@ -6,9 +6,10 @@
 class Level0 : public Level
 {
     int index;
+    std::vector<char> sequence;
+
 public:
-    Level0();
-    ~Level0();
+    std::unique_ptr<Block> generateBlock(char blockType, int level) override;
 };
 
 #endif
