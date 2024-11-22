@@ -9,9 +9,9 @@ class Block
 {
 private:
     std::vector<Cell *> cells;
+    Cell *bottomLeftCell;
     char blockType;
     int level;
-    int anchorX, anchorY;
     bool heavy;
 
 public:
@@ -45,6 +45,9 @@ public:
     // For level effects
     bool isHeavy() const;
     void setHeavy(bool heavy);
+
+    // update
+    int updateBlock();
 };
 
 #endif
