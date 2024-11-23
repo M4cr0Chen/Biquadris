@@ -29,6 +29,22 @@ std::vector<Cell *> Block::getCells() const
     return cells;
 }
 
+void Block::setBlockEmpty()
+{
+    for (Cell *cell : cells)
+    {
+        cell->setCellType(' ');
+    }
+}
+
+void Block::setBlockCellType(char blockType)
+{
+    for (Cell *cell : cells)
+    {
+        cell->setCellType(blockType);
+    }
+}
+
 char Block::getBlockType() const
 {
     return blockType;
@@ -42,6 +58,26 @@ void Block::setBlockType(char blockType)
 void Block::setLevel(int level)
 {
     this->level = level;
+}
+
+void Block::setRotationIndex(int index)
+{
+    rotationIndex = index;
+}
+
+int Block::getRotationIndex()
+{
+    return rotationIndex;
+}
+
+void Block::setWidth(int width)
+{
+    this->width = width;
+}
+
+int Block::getWidth()
+{
+    return width;
 }
 
 bool Block::isAtBottom() const

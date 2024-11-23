@@ -10,12 +10,14 @@ class Board;
 
 class Block
 {
-private:
+protected:
     std::vector<Cell *> cells;
     Cell *bottomLeftCell;
     Board *board;
     char blockType;
     int level;
+    int rotationIndex;
+    int width;
 
 public:
     virtual ~Block() = default;
@@ -25,13 +27,20 @@ public:
     virtual void drop() = 0;
     virtual bool rotateClockwise() = 0;
     virtual bool rotateCounterClockwise() = 0;
+    virtual bool isValidMove(std::vector<Cell *> newCells);
     std::vector<Cell *> getCells() const;
+    void setBlockEmpty();
+    void setBlockCellType(char type);
     Board *getBoard() const;
     // std::vector<Cell *> getProjectedCells(char dir) const;
     char getBlockType() const;
     void setBlockType(char type);
     int getLevel();
     void setLevel(int level);
+    void setRotationIndex(int index);
+    int getRotationIndex();
+    void setWidth(int width);
+    int getWidth();
     bool isAtBottom() const;
     void takeoverCells(std::vector<Cell *> &newCells);
     Cell *getBottomLeftCell();

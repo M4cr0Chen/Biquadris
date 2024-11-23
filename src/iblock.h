@@ -13,6 +13,7 @@ public:
     void drop() override;
     bool rotateClockwise() override;
     bool rotateCounterClockwise() override;
+    bool isValidMove(std::vector<Cell *> newCells) override;
 };
 
 #endif

@@ -13,7 +13,7 @@ class Board
 {
 private:
     std::vector<std::vector<std::unique_ptr<Cell>>> grid;
-    std::vector<std::unique_ptr<Block>> activeBlocks;
+    // std::vector<std::unique_ptr<Block>> activeBlocks;
 
     char nextBlockType;
 
@@ -21,6 +21,8 @@ private:
     std::vector<Cell *> getRotateProjectedCells(const Block *block, char dir) const;
 
 public:
+    // Testing purpose
+    std::vector<std::unique_ptr<Block>> activeBlocks;
     Board();
     Cell *getCellAt(int x, int y);
     char getNextBlockType();

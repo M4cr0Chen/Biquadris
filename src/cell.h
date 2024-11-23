@@ -16,6 +16,7 @@ public:
     void setY(int y);
     void setCoordinate(int x, int y);
     char getCellType();
+    void setCellType(char type);
     bool isFilled();
 };
 
