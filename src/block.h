@@ -30,7 +30,7 @@ public:
     virtual void drop() = 0;
     virtual bool rotateClockwise() = 0;
     virtual bool rotateCounterClockwise() = 0;
-    virtual bool isValidMove(std::vector<Cell *> newCells);
+    virtual bool isValidMove(std::vector<Cell *> newCells) = 0;
     std::vector<Cell *> getCells() const;
     void setBlockEmpty();
     void setBlockCellType(char type);
