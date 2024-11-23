@@ -235,16 +235,16 @@ bool JBlock::rotateClockwise()
             rotationIndex = (rotationIndex + 1) % 4;
         }
 
-        if (isValidMove(tempCells))
-        {
-            for (Cell *cell : tempCells)
-            {
-                cell->setCellType(getBlockType());
-            }
-            bottomLeftCell = tempCells[0];
-            cells = tempCells;
-        }
-        return false;
+        // if (isValidMove(tempCells))
+        // {
+        //     for (Cell *cell : tempCells)
+        //     {
+        //         cell->setCellType(getBlockType());
+        //     }
+        //     bottomLeftCell = tempCells[0];
+        //     cells = tempCells;
+        // }
+        // return false;
     }
 
     if (isValidMove(tempCells))

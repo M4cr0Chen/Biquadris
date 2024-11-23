@@ -33,4 +33,10 @@ int main(int argc, char *argv[])
         game.getPlayerTwo()->getBoard().activeBlocks[0]->rotateClockwise();
         game.updateGameDisplay();
     }
+
+    for (int i = 0; i < 6; i++) {
+        game.getPlayerOne()->getBoard().activeBlocks[0]->rotateCounterClockwise();
+        game.getPlayerTwo()->getBoard().activeBlocks[0]->rotateCounterClockwise();
+        game.updateGameDisplay();
+    }
 }
