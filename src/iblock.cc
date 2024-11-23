@@ -4,12 +4,13 @@ IBlock::IBlock(int level)
 {
     setLevel(level);
     setBlockType('I');
+    setRotationIndex(0);
+    setWidth(4);
 }
 
 void IBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid)
 {
     // setBoard(board);
-    setRotationIndex(0);
     gridRef = &grid;
     // std::vector<Cell *> cells = getCells();
     //Board *board = getBoard();
@@ -147,7 +148,7 @@ bool IBlock::isValidMove(std::vector<Cell *> newCells)
 bool IBlock::rotateClockwise()
 {
     std::vector<Cell *> tempCells;
-    int rotationIndex = getRotationIndex();
+    rotationIndex = getRotationIndex();
 
     // Horizontal to Vertical (0->1, 2->3)
     if (rotationIndex == 0 || rotationIndex == 2)
@@ -168,7 +169,7 @@ bool IBlock::rotateClockwise()
         if (isValidMove(tempCells))
         {
             setWidth(1);
-            setRotationIndex(getRotationIndex() + 1);
+            rotationIndex++;
         }
     }
     // Vertical to Horizontal (1->2, 3->0)
@@ -193,6 +194,17 @@ bool IBlock::rotateClockwise()
             rotationIndex = (rotationIndex + 1) % 4;
         }
     }
+
+    if (isValidMove(tempCells))
+    {
+        for (Cell *cell : tempCells)
+        {
+            cell->setCellType(getBlockType());
+        }
+        bottomLeftCell = tempCells[0];
+        cells = tempCells;
+    }
+    return false;
 }
 
 bool IBlock::rotateCounterClockwise()
