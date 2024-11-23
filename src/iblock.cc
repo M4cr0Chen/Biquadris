@@ -14,10 +14,10 @@ void IBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<
     // std::vector<Cell *> cells = getCells();
     //Board *board = getBoard();
     setBottomLeftCell(bottomLeftCell);
-    cells.push_back((*gridRef)[3][0].get());
-    cells.push_back((*gridRef)[3][1].get());
-    cells.push_back((*gridRef)[3][2].get());
-    cells.push_back((*gridRef)[3][3].get());
+    cells.emplace_back((*gridRef)[3][0].get());
+    cells.emplace_back((*gridRef)[3][1].get());
+    cells.emplace_back((*gridRef)[3][2].get());
+    cells.emplace_back((*gridRef)[3][3].get());
     (*gridRef)[3][0]->setCellType('I');
     (*gridRef)[3][1]->setCellType('I');
     (*gridRef)[3][2]->setCellType('I');
@@ -37,7 +37,9 @@ bool IBlock::moveLeft()
     std::vector<Cell *> newCells;
     for (Cell *cell : cells)
     {
-        newCells.emplace_back(gridRef[x][y - 1]);
+        int row = cell->getX();
+        int col = cell->getY();
+        newCells.emplace_back((*gridRef)[row][col - 1].get());
     }
 
     if (isValidMove(newCells))
@@ -67,7 +69,9 @@ bool IBlock::moveRight()
     std::vector<Cell *> newCells;
     for (Cell *cell : cells)
     {
-        newCells.emplace_back(gridRef[x][y + 1]);
+        int row = cell->getX();
+        int col = cell->getY();
+        newCells.emplace_back((*gridRef)[row][col + 1].get());
     }
 
     if (isValidMove(newCells))
@@ -97,7 +101,9 @@ bool IBlock::moveDown()
     std::vector<Cell *> newCells;
     for (Cell *cell : cells)
     {
-        newCells.emplace_back(gridRef[x + 1][y]);
+        int row = cell->getX();
+        int col = cell->getY();
+        newCells.emplace_back((*gridRef)[row + 1][col].get());
     }
 
     if (isValidMove(newCells))
@@ -154,10 +160,10 @@ bool IBlock::rotateClockwise()
         if (x < 3)
             return false;
 
-        tempCells.push_back(board->getCellAt(x, y));     // Bottom
-        tempCells.push_back(board->getCellAt(x - 1, y)); // Second from bottom
-        tempCells.push_back(board->getCellAt(x - 2, y)); // Second from top
-        tempCells.push_back(board->getCellAt(x - 3, y)); // Top
+        tempCells.push_back((*gridRef)[x][y].get());     // Bottom
+        tempCells.push_back((*gridRef)[x - 1][y].get()); // Second from bottom
+        tempCells.push_back((*gridRef)[x - 2][y].get()); // Second from top
+        tempCells.push_back((*gridRef)[x - 3][y].get()); // Top
 
         if (isValidMove(tempCells))
         {
@@ -176,10 +182,10 @@ bool IBlock::rotateClockwise()
         if (y > 7)
             return false;
 
-        tempCells.push_back(board->getCellAt(x, y));     // Left
-        tempCells.push_back(board->getCellAt(x, y + 1)); // Second from left
-        tempCells.push_back(board->getCellAt(x, y + 2)); // Second from right
-        tempCells.push_back(board->getCellAt(x, y + 3)); // Right
+        tempCells.push_back((*gridRef)[x][y].get());     // Left
+        tempCells.push_back((*gridRef)[x][y + 1].get()); // Second from left
+        tempCells.push_back((*gridRef)[x][y + 2].get()); // Second from right
+        tempCells.push_back((*gridRef)[x][y + 3].get()); // Right
 
         if (isValidMove(tempCells))
         {

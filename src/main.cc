@@ -9,7 +9,17 @@ int main(int argc, char *argv[])
 
     game.updateGameDisplay();
     game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('I', 0));
-    game.updateGameDisplay();
-    game.getPlayerOne()->getBoard().activeBlocks[0]->moveDown();
+    // game.updateGameDisplay();
+    // game.getPlayerOne()->getBoard().activeBlocks[0]->moveDown();
+    // game.updateGameDisplay();
+    // game.getPlayerOne()->getBoard().activeBlocks[0]->moveRight();
+    // game.updateGameDisplay();
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     game.getPlayerOne()->getBoard().activeBlocks[0]->moveRight();
+    //     game.updateGameDisplay();
+    // }
+
+    game.getPlayerOne()->getBoard().activeBlocks[0]->rotateClockwise();
     game.updateGameDisplay();
 }
