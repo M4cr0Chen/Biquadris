@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 
     game.updateGameDisplay();
     game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('I', 0));
+    game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('J', 0));
     game.updateGameDisplay();
     game.getPlayerOne()->getBoard().activeBlocks[0]->moveDown();
     game.updateGameDisplay();
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
         game.getPlayerOne()->getBoard().activeBlocks[0]->moveRight();
         game.updateGameDisplay();
     }
-    
+
     game.getPlayerOne()->getBoard().activeBlocks[0]->moveRight();
     game.updateGameDisplay();
 
