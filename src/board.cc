@@ -28,5 +28,5 @@ void Board::addBlock(std::unique_ptr<Block> newblock)
     // testing purpose
     activeBlocks.emplace_back(std::move(newblock));
     currentBlock = activeBlocks[activeBlocks.size() - 1].get();
-    currentBlock->init(grid[3][0].get(), &grid);
+    currentBlock->init(grid[3][0].get(), grid);
 }

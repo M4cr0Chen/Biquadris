@@ -22,7 +22,7 @@ protected:
 public:
     Block() : bottomLeftCell{nullptr}, board{nullptr}, blockType{' '}, level{0} {}
 
-    virtual void init(Cell * bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> *grid) = 0;
+    virtual void init(Cell * bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid) = 0;
     virtual ~Block() = default;
     virtual bool moveLeft() = 0;
     virtual bool moveRight() = 0;
