@@ -253,8 +253,9 @@ bool JBlock::rotateClockwise()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = tempCells[0];
+        // bottomLeftCell = tempCells[0];
         cells = tempCells;
+        return true;
     }
     return false;
 }
