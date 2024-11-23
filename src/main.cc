@@ -28,4 +28,10 @@ int main(int argc, char *argv[])
 
     game.getPlayerOne()->getBoard().activeBlocks[0]->rotateClockwise();
     game.updateGameDisplay();
+
+    game.getPlayerOne()->getBoard().activeBlocks[0]->rotateClockwise();
+    game.updateGameDisplay();
+
+    game.getPlayerOne()->getBoard().activeBlocks[0]->rotateClockwise();
+    game.updateGameDisplay();
 }
