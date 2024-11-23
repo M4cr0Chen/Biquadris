@@ -23,7 +23,10 @@ char Board::getNextBlockType()
     return nextBlockType;
 }
 
-void Board::addBlock(std::unique_ptr<Block> block)
+void Board::addBlock(std::unique_ptr<Block> newblock)
 {
-    activeBlocks.emplace_back(std::move(block));
+    // testing purpose
+    activeBlocks.emplace_back(std::move(newblock));
+    currentBlock = activeBlocks[activeBlocks.size() - 1].get();
+    currentBlock->init(grid[3][0].get(), grid);
 }

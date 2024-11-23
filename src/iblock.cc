@@ -4,6 +4,11 @@ IBlock::IBlock(int level)
 {
     setLevel(level);
     setBlockType('I');
+}
+
+void IBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid)
+{
+    // setBoard(board);
     setRotationIndex(0);
     std::vector<Cell *> cells = getCells();
     Board *board = getBoard();

@@ -24,6 +24,11 @@ Board *Block::getBoard() const
     return board;
 }
 
+void Block::setBoard(Board *board)
+{
+    this->board = board;
+}
+
 std::vector<Cell *> Block::getCells() const
 {
     return cells;
@@ -88,6 +93,11 @@ bool Block::isAtBottom() const
 Cell *Block::getBottomLeftCell()
 {
     return bottomLeftCell;
+}
+
+void Block::setBottomLeftCell(Cell *cell)
+{
+    bottomLeftCell = cell;
 }
 
 void Block::takeoverCells(std::vector<Cell *> &newCells)

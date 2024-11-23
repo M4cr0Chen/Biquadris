@@ -15,6 +15,9 @@ private:
     std::vector<std::vector<std::unique_ptr<Cell>>> grid;
     // std::vector<std::unique_ptr<Block>> activeBlocks;
 
+    Block *currentBlock;
+    Block *nextBlock;
+
     char nextBlockType;
 
     std::vector<Cell *> getMoveProjectedCells(const Block *block, char dir) const;

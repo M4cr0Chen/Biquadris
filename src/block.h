@@ -20,6 +20,9 @@ protected:
     int width;
 
 public:
+    Block() : bottomLeftCell{nullptr}, board{nullptr}, blockType{' '}, level{0} {}
+
+    virtual void init(Cell * bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> & grid) = 0;
     virtual ~Block() = default;
     virtual bool moveLeft() = 0;
     virtual bool moveRight() = 0;
@@ -32,6 +35,7 @@ public:
     void setBlockEmpty();
     void setBlockCellType(char type);
     Board *getBoard() const;
+    void setBoard(Board *board);
     // std::vector<Cell *> getProjectedCells(char dir) const;
     char getBlockType() const;
     void setBlockType(char type);
@@ -44,6 +48,7 @@ public:
     bool isAtBottom() const;
     void takeoverCells(std::vector<Cell *> &newCells);
     Cell *getBottomLeftCell();
+    void setBottomLeftCell(Cell *cell);
     int updateBlock();
 };
 
