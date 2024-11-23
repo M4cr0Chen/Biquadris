@@ -20,10 +20,10 @@ void JBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<
     cells.emplace_back((*gridRef)[2][0].get());
     cells.emplace_back((*gridRef)[3][1].get());
     cells.emplace_back((*gridRef)[3][2].get());
-    (*gridRef)[2][0]->setCellType('I');
-    (*gridRef)[3][1]->setCellType('I');
-    (*gridRef)[3][2]->setCellType('I');
-    bottomLeftCell->setCellType('I');
+    (*gridRef)[2][0]->setCellType(getBlockType());
+    (*gridRef)[3][1]->setCellType(getBlockType());
+    (*gridRef)[3][2]->setCellType(getBlockType());
+    bottomLeftCell->setCellType(getBlockType());
 }
 
 bool JBlock::moveLeft()
@@ -63,7 +63,7 @@ bool JBlock::moveRight()
     int x = getBottomLeftCell()->getX();
     int y = getBottomLeftCell()->getY();
 
-    if (y + width > 9)
+    if (y + width > 10)
     {
         return false;
     }
@@ -231,7 +231,7 @@ bool JBlock::rotateClockwise()
 
         if (isValidMove(tempCells))
         {
-            width = 4;
+            width = 3;
             rotationIndex = (rotationIndex + 1) % 4;
         }
 
