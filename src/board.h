@@ -15,8 +15,8 @@ private:
     std::vector<std::vector<std::unique_ptr<Cell>>> grid;
     // std::vector<std::unique_ptr<Block>> activeBlocks;
 
-    Block *currentBlock;
-    Block *nextBlock;
+    std::unique_ptr<Block> currentBlock;
+    std::unique_ptr<Block> nextBlock;
 
     char nextBlockType;
 
@@ -30,7 +30,11 @@ public:
     Cell *getCellAt(int x, int y);
     char getNextBlockType();
     void addBlock(std::unique_ptr<Block> block);
+    int dropBlock(int *numLine);
     void changeBlock(Block *block);
+
+    Block *getCurrentBlock();
+    Block *getNextBlock();
 };
 
 #endif

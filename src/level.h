@@ -11,11 +11,11 @@
 #include "tblock.h"
 #include "zblock.h"
 
-
 class Level
 {
 public:
-    virtual std::unique_ptr<Block> generateBlock(char blockType, int level) = 0;
+    virtual std::unique_ptr<Block> generateBlock() = 0;
+    std::unique_ptr<Block> giveMeABlock(char blockType, int level);
     ~Level() = default;
 };
 

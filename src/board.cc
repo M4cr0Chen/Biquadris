@@ -1,6 +1,6 @@
 #include "board.h"
 
-Board::Board() : nextBlockType{' '}
+Board::Board() : nextBlockType{' '}, currentBlock{nullptr}, nextBlock{nullptr}
 {
     grid.resize(18);
     for (int i = 0; i < 18; i++)
@@ -26,7 +26,38 @@ char Board::getNextBlockType()
 void Board::addBlock(std::unique_ptr<Block> newblock)
 {
     // testing purpose
-    activeBlocks.emplace_back(std::move(newblock));
-    currentBlock = activeBlocks[activeBlocks.size() - 1].get();
+    // activeBlocks.emplace_back(std::move(newblock));
+
+    if (nextBlock == nullptr)
+    {
+        nextBlock = std::move(newblock);
+        return;
+    }
+
+    // currentBlock = activeBlocks[activeBlocks.size() - 1].get();
+    currentBlock = std::move(nextBlock);
+    nextBlock = std::move(newblock);
     currentBlock->init(grid[3][0].get(), grid);
+}
+
+int Board::dropBlock(int *numLine)
+{
+    currentBlock->drop();
+    activeBlocks.push_back(std::move(currentBlock));
+
+    // clearline logic
+
+    currentBlock = nullptr;
+
+    return 0;
+}
+
+Block *Board::getCurrentBlock()
+{
+    return currentBlock.get();
+}
+
+Block *Board::getNextBlock()
+{
+    return nextBlock.get();
 }

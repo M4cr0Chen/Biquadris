@@ -11,16 +11,14 @@ int main(int argc, char *argv[])
 
     std::string command;
 
-    game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('I', 0));
+    // game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock());
     game.updateGameDisplay();
-    game.getPlayerOne()->getBoard().activeBlocks[0]->drop();
+    game.getPlayerOne()->getBoard().getCurrentBlock()->drop();
     game.updateGameDisplay();
-    game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('O', 0));
+    game.switchTurn();
     game.updateGameDisplay();
-    game.getPlayerOne()->getBoard().activeBlocks[1]->drop();
+    game.getPlayerOne()->getBoard().getCurrentBlock()->drop();
     game.updateGameDisplay();
-
-
 
     // for (int i = 0; i < 2; i++) {
     //     std::cout << "Enter block you want to add: ";

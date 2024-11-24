@@ -1,22 +1,30 @@
 #include "level0.h"
 
-std::unique_ptr<Block> Level0::generateBlock(char blockType, int level)
+Level0::Level0(bool isPlayerOne, std::string s1, std::string s2)
 {
-    switch (blockType)
+    if (isPlayerOne)
     {
-    case 'I':
-        return std::make_unique<IBlock>(level);
-    case 'J':
-        return std::make_unique<JBlock>(level);
-    case 'L':
-        return std::make_unique<LBlock>(level);
-    case 'O':
-        return std::make_unique<OBlock>(level);
-    case 'S':
-        return std::make_unique<SBlock>(level);
-    case 'Z':
-        return std::make_unique<ZBlock>(level);
-    case 'T':
-        return std::make_unique<TBlock>(level);
+        index = 0;
+        for (char c : s1)
+        {
+            sequence.push_back(c);
+        }
     }
+    else
+    {
+        index = 0;
+        for (char c : s2)
+        {
+            sequence.push_back(c);
+        }
+    }
+}
+
+std::unique_ptr<Block> Level0::generateBlock()
+{
+    std::unique_ptr<Block> block = std::move(giveMeABlock(sequence[index], level));
+
+    index = (index + 1) % sequence.size();
+
+    return std::move(block);
 }

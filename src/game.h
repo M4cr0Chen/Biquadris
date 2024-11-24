@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <memory>
+#include <string>
 #include "subject.h"
 #include "player.h"
 
@@ -20,7 +21,7 @@ private:
     std::unique_ptr<Player> playerTwo;
 
 public:
-    Game();
+    Game(bool graphicsOn, std::string s1, std::string s2);
     ~Game() = default;
     void runGame();
     void restartGame();
@@ -31,6 +32,7 @@ public:
     bool getIsGameOver() const;
     Player *getPlayerOne();
     Player *getPlayerTwo();
+    Player *getCurrentPlayer();
 };
 
 #endif
