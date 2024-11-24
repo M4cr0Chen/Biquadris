@@ -17,12 +17,12 @@ void LBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<
     // Board *board = getBoard();
     setBottomLeftCell(bottomLeftCell);
     cells.emplace_back(bottomLeftCell);
-    cells.emplace_back((*gridRef)[2][0].get());
     cells.emplace_back((*gridRef)[3][1].get());
     cells.emplace_back((*gridRef)[3][2].get());
-    (*gridRef)[2][0]->setCellType(getBlockType());
+    cells.emplace_back((*gridRef)[2][2].get());
     (*gridRef)[3][1]->setCellType(getBlockType());
     (*gridRef)[3][2]->setCellType(getBlockType());
+    (*gridRef)[2][2]->setCellType(getBlockType());
     bottomLeftCell->setCellType(getBlockType());
 }
 
@@ -161,10 +161,10 @@ bool LBlock::rotateClockwise()
         // if (x > 3)
         //     return false;
 
-        tempCells.push_back((*gridRef)[x][y].get());         // Bottom
-        tempCells.push_back((*gridRef)[x - 1][y].get());     // Second from bottom
-        tempCells.push_back((*gridRef)[x - 2][y].get());     // Second from top
-        tempCells.push_back((*gridRef)[x - 2][y + 1].get()); // Top
+        tempCells.push_back((*gridRef)[x][y].get());     // Bottom
+        tempCells.push_back((*gridRef)[x][y + 1].get()); // Second from bottom
+        tempCells.push_back((*gridRef)[x - 1][y].get()); // Second from top
+        tempCells.push_back((*gridRef)[x - 2][y].get()); // Top
 
         if (isValidMove(tempCells))
         {
@@ -182,7 +182,7 @@ bool LBlock::rotateClockwise()
         if (y > 8)
             return false;
 
-        tempCells.push_back((*gridRef)[x][y + 2].get());     // Left
+        tempCells.push_back((*gridRef)[x][y].get());         // Left
         tempCells.push_back((*gridRef)[x - 1][y].get());     // Second from left
         tempCells.push_back((*gridRef)[x - 1][y + 1].get()); // Second from right
         tempCells.push_back((*gridRef)[x - 1][y + 2].get()); // Right
@@ -203,9 +203,9 @@ bool LBlock::rotateClockwise()
         // if (y > 7)
         //     return false;
 
-        tempCells.push_back((*gridRef)[x][y].get());         // Left
-        tempCells.push_back((*gridRef)[x][y + 1].get());     // Second from left
-        tempCells.push_back((*gridRef)[x - 1][y + 1].get()); // Second from right
+        tempCells.push_back((*gridRef)[x][y + 1].get());     // Left
+        tempCells.push_back((*gridRef)[x - 1][y + 1].get()); // Second from left
+        tempCells.push_back((*gridRef)[x - 2][y].get());     // Second from right
         tempCells.push_back((*gridRef)[x - 2][y + 1].get()); // Right
 
         if (isValidMove(tempCells))
@@ -224,10 +224,10 @@ bool LBlock::rotateClockwise()
         if (y > 8)
             return false;
 
-        tempCells.push_back((*gridRef)[x][y].get());     // Left
-        tempCells.push_back((*gridRef)[x][y + 1].get()); // Second from left
-        tempCells.push_back((*gridRef)[x][y + 2].get()); // Second from right
-        tempCells.push_back((*gridRef)[x - 1][y].get()); // Right
+        tempCells.push_back((*gridRef)[x][y].get());         // Left
+        tempCells.push_back((*gridRef)[x][y + 1].get());     // Second from left
+        tempCells.push_back((*gridRef)[x][y + 2].get());     // Second from right
+        tempCells.push_back((*gridRef)[x - 1][y + 2].get()); // Right
 
         if (isValidMove(tempCells))
         {
