@@ -4,9 +4,9 @@ OBlock::OBlock(int level)
 {
     setBottomLeftCell(nullptr);
     setLevel(level);
-    setBlockType('S');
+    setBlockType('O');
     setRotationIndex(0);
-    setWidth(3);
+    setWidth(2);
 }
 
 void OBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid)

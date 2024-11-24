@@ -11,8 +11,46 @@ int main(int argc, char *argv[])
 
     std::string command;
 
-    game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('J', 0));
-    game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('L', 0));
+    for (int i = 0; i < 2; i++) {
+        std::cout << "Enter block you want to add: ";
+        std::cin >> command;
+        int player;
+        std::cout << "Enter player: ";
+        std::cin >> player;
+        if (player == 1) {
+            if (command == "i") {
+                game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('I', 0));
+            } else if (command == "j") {
+                game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('J', 0));
+            } else if (command == "l") {
+                game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('L', 0));
+            } else if (command == "o") {
+                game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('O', 0));
+            } else if (command == "s") {
+                game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('S', 0));
+            } else if (command == "z") {
+                game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('Z', 0));
+            } else if (command == "t") {
+                game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('T', 0));
+            }
+        } else if (player == 2) {
+            if (command == "i") {
+                game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('I', 0));
+            } else if (command == "j") {
+                game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('J', 0));
+            } else if (command == "l") {
+                game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('L', 0));
+            } else if (command == "o") {
+                game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('O', 0));
+            } else if (command == "s") {
+                game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('S', 0));
+            } else if (command == "z") {
+                game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('Z', 0));
+            } else if (command == "t") {
+                game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('T', 0));
+            }
+        }
+    }
     game.updateGameDisplay();
 
     while (std::cin >> command) {

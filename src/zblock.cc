@@ -4,7 +4,7 @@ ZBlock::ZBlock(int level)
 {
     setBottomLeftCell(nullptr);
     setLevel(level);
-    setBlockType('S');
+    setBlockType('Z');
     setRotationIndex(0);
     setWidth(3);
 }

@@ -4,7 +4,7 @@ TBlock::TBlock(int level)
 {
     setBottomLeftCell(nullptr);
     setLevel(level);
-    setBlockType('S');
+    setBlockType('T');
     setRotationIndex(0);
     setWidth(3);
 }
@@ -169,7 +169,7 @@ bool TBlock::rotateClockwise()
         if (isValidMove(tempCells))
         {
             setWidth(2);
-            rotationIndex = (rotationIndex + 1) % 2;
+            rotationIndex = (rotationIndex + 1) % 4;
         }
     }
     else if (rotationIndex == 1)
@@ -190,7 +190,7 @@ bool TBlock::rotateClockwise()
         if (isValidMove(tempCells))
         {
             width = 3;
-            rotationIndex = (rotationIndex + 1) % 2;
+            rotationIndex = (rotationIndex + 1) % 4;
         }
     }
     else if (rotationIndex == 2)
@@ -211,7 +211,7 @@ bool TBlock::rotateClockwise()
         if (isValidMove(tempCells))
         {
             setWidth(2);
-            rotationIndex = (rotationIndex + 1) % 2;
+            rotationIndex = (rotationIndex + 1) % 4;
         }
     }
     else if (rotationIndex == 3)
@@ -232,7 +232,7 @@ bool TBlock::rotateClockwise()
         if (isValidMove(tempCells))
         {
             width = 3;
-            rotationIndex = (rotationIndex + 1) % 2;
+            rotationIndex = (rotationIndex + 1) % 4;
         }
     }
 
