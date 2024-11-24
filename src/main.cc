@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
 
     std::string command;
 
-    game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('I', 0));
-    game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('J', 0));
+    game.getPlayerOne()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('J', 0));
+    game.getPlayerTwo()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('L', 0));
     game.updateGameDisplay();
 
     while (std::cin >> command) {

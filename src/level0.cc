@@ -8,5 +8,7 @@ std::unique_ptr<Block> Level0::generateBlock(char blockType, int level)
         return std::make_unique<IBlock>(level);
     case 'J':
         return std::make_unique<JBlock>(level);
+    case 'L':
+        return std::make_unique<LBlock>(level);
     }
 }
