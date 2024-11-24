@@ -221,8 +221,8 @@ bool JBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        // if (y > 7)
-        //     return false;
+        if (y > 8)
+            return false;
 
         tempCells.push_back((*gridRef)[x][y].get());     // Left
         tempCells.push_back((*gridRef)[x][y + 1].get()); // Second from left
