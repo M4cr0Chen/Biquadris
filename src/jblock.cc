@@ -50,7 +50,7 @@ bool JBlock::moveLeft()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = newCells[0];
+        bottomLeftCell = (*gridRef)[x][y - 1].get();
         cells = newCells;
         return true;
     }
@@ -82,7 +82,7 @@ bool JBlock::moveRight()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = newCells[0];
+        bottomLeftCell = (*gridRef)[x][y + 1].get();
         cells = newCells;
         return true;
     }
@@ -114,7 +114,7 @@ bool JBlock::moveDown()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = newCells[0];
+        bottomLeftCell = (*gridRef)[x + 1][y].get();
         cells = newCells;
         return true;
     }
