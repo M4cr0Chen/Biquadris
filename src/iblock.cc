@@ -30,7 +30,7 @@ bool IBlock::moveLeft()
     int x = getBottomLeftCell()->getX();
     int y = getBottomLeftCell()->getY();
 
-    if (x == 0)
+    if (y == 0)
     {
         return false;
     }
@@ -49,7 +49,7 @@ bool IBlock::moveLeft()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = newCells[0];
+        bottomLeftCell = (*gridRef)[x][y - 1].get();
         cells = newCells;
         return true;
     }
@@ -81,7 +81,7 @@ bool IBlock::moveRight()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = newCells[0];
+        bottomLeftCell = (*gridRef)[x][y + 1].get();
         cells = newCells;
         return true;
     }
@@ -94,7 +94,7 @@ bool IBlock::moveDown()
     int x = getBottomLeftCell()->getX();
     int y = getBottomLeftCell()->getY();
 
-    if (y == 17)
+    if (x == 17)
     {
         return false;
     }
@@ -113,7 +113,7 @@ bool IBlock::moveDown()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = newCells[0];
+        bottomLeftCell = (*gridRef)[x + 1][y].get();
         cells = newCells;
         return true;
     }
@@ -158,8 +158,8 @@ bool IBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        if (x < 3)
-            return false;
+        // if (x < 3)
+        //     return false;
 
         tempCells.push_back((*gridRef)[x][y].get());     // Bottom
         tempCells.push_back((*gridRef)[x - 1][y].get()); // Second from bottom

@@ -31,7 +31,7 @@ bool JBlock::moveLeft()
     int x = getBottomLeftCell()->getX();
     int y = getBottomLeftCell()->getY();
 
-    if (x == 0)
+    if (y == 0)
     {
         return false;
     }
@@ -95,7 +95,7 @@ bool JBlock::moveDown()
     int x = getBottomLeftCell()->getX();
     int y = getBottomLeftCell()->getY();
 
-    if (y == 17)
+    if (x == 17)
     {
         return false;
     }
@@ -158,7 +158,7 @@ bool JBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        // if (x > 3)
+        // if (y > 3)
         //     return false;
 
         tempCells.push_back((*gridRef)[x][y].get());         // Bottom
