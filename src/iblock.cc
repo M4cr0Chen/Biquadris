@@ -201,13 +201,20 @@ bool IBlock::rotateClockwise()
         {
             cell->setCellType(getBlockType());
         }
-        bottomLeftCell = tempCells[0];
+        // bottomLeftCell = tempCells[0];
         cells = tempCells;
+        return true;
     }
     return false;
 }
 
 bool IBlock::rotateCounterClockwise()
 {
-    rotateClockwise();
+    // Three clockwise rotations = one counterclockwise rotation
+    bool success = true;
+    for (int i = 0; i < 3 && success; i++)
+    {
+        success = rotateClockwise();
+    }
+    return success;
 }
