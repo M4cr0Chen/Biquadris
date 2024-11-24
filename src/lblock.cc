@@ -31,7 +31,7 @@ bool LBlock::moveLeft()
     int x = getBottomLeftCell()->getX();
     int y = getBottomLeftCell()->getY();
 
-    if (x == 0)
+    if (y == 0)
     {
         return false;
     }
@@ -95,7 +95,7 @@ bool LBlock::moveDown()
     int x = getBottomLeftCell()->getX();
     int y = getBottomLeftCell()->getY();
 
-    if (y == 17)
+    if (x == 17)
     {
         return false;
     }
