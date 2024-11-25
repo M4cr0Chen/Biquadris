@@ -6,7 +6,7 @@
 class ZBlock : public Block
 {
 public:
-    std::vector<std::vector<std::unique_ptr<Cell>>> *gridRef;
+    //std::vector<std::vector<std::unique_ptr<Cell>>> *gridRef;
     ZBlock(int level);
     void init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid) override;
     bool rotateClockwise() override;

@@ -13,7 +13,8 @@ void Player::createBlock()
 
 int Player::dropBlock()
 {
-    int numLine, score;
+    int numLine = 0;
+    int score = 0;
     score = board.dropBlock(&numLine);
 }
 

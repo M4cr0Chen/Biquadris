@@ -22,6 +22,13 @@ int main(int argc, char *argv[])
     // game.updateGameDisplay();
 
     game.updateGameDisplay();
+
+    for (int i = 0; i < 14; i++) {
+        game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveDown();
+    }
+
+    game.updateGameDisplay();
+
     while (std::cin >> command)
     {
         if (command == "l")
@@ -45,8 +52,7 @@ int main(int argc, char *argv[])
             bool suceedDown = game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveDown();
             if (suceedDown == false)
             {
-                game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
-                game.switchTurn();
+                game.getCurrentPlayer()->dropBlock();
             }
         }
         else if (command == "dr")
