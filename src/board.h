@@ -23,6 +23,9 @@ private:
     std::vector<Cell *> getMoveProjectedCells(const Block *block, char dir) const;
     std::vector<Cell *> getRotateProjectedCells(const Block *block, char dir) const;
 
+    bool isHeavy;
+    bool isBlind;
+
 public:
     // Testing purpose
     std::vector<std::unique_ptr<Block>> activeBlocks;
@@ -35,6 +38,7 @@ public:
 
     Block *getCurrentBlock();
     Block *getNextBlock();
+    int getHeavyInt();
 };
 
 #endif

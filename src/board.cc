@@ -61,3 +61,13 @@ Block *Board::getNextBlock()
 {
     return nextBlock.get();
 }
+
+int Board::getHeavyInt()
+{
+    if (isHeavy)
+    {
+        return 2;
+    }
+
+    return 0;
+}
