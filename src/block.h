@@ -11,6 +11,7 @@ class Board;
 class Block
 {
 protected:
+    std::vector<std::vector<std::unique_ptr<Cell>>> *gridRef;
     std::vector<Cell *> cells;
     Cell *bottomLeftCell;
     Board *board;
@@ -22,15 +23,15 @@ protected:
 public:
     Block() : bottomLeftCell{nullptr}, board{nullptr}, blockType{' '}, level{0} {}
 
-    virtual void init(Cell * bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid) = 0;
+    virtual void init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid) = 0;
     virtual ~Block() = default;
-    virtual bool moveLeft() = 0;
-    virtual bool moveRight() = 0;
-    virtual bool moveDown() = 0;
-    virtual void drop() = 0;
+    bool moveLeft();
+    bool moveRight();
+    bool moveDown();
+    void drop();
+    bool isValidMove(std::vector<Cell *> newCells);
     virtual bool rotateClockwise() = 0;
     virtual bool rotateCounterClockwise() = 0;
-    virtual bool isValidMove(std::vector<Cell *> newCells) = 0;
     std::vector<Cell *> getCells() const;
     void setBlockEmpty();
     void setBlockCellType(char type);

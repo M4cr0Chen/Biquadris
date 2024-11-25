@@ -22,23 +22,44 @@ int main(int argc, char *argv[])
     // game.updateGameDisplay();
 
     game.updateGameDisplay();
-    while (std::cin >> command) {
-        if (command == "l") {
+    while (std::cin >> command)
+    {
+        if (command == "l")
+        {
             game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveLeft();
-        } else if (command == "r") {
+        }
+        else if (command == "r")
+        {
             game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveRight();
-        } else if (command == "cw") {
+        }
+        else if (command == "cw")
+        {
             game.getCurrentPlayer()->getBoard().getCurrentBlock()->rotateClockwise();
-        } else if (command == "ccw") {
+        }
+        else if (command == "ccw")
+        {
             game.getCurrentPlayer()->getBoard().getCurrentBlock()->rotateCounterClockwise();
-        } else if (command == "d") {
-            game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveDown();
-        } else if (command == "dr") {
+        }
+        else if (command == "d")
+        {
+            bool suceedDown = game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveDown();
+            if (suceedDown == false)
+            {
+                game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
+                game.switchTurn();
+            }
+        }
+        else if (command == "dr")
+        {
             game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
             game.switchTurn();
-        } else if (command == "pX") {
+        }
+        else if (command == "pX")
+        {
             std::cout << game.getCurrentPlayer()->getBoard().getCurrentBlock()->getBottomLeftCell()->getX() << std::endl;
-        } else if (command == "pY") {
+        }
+        else if (command == "pY")
+        {
             std::cout << game.getCurrentPlayer()->getBoard().getCurrentBlock()->getBottomLeftCell()->getY() << std::endl;
         }
         game.updateGameDisplay();
@@ -63,4 +84,3 @@ int main(int argc, char *argv[])
 //                     game.getCurrentPlayer()->getBoard().addBlock(game.getPlayerOne()->getPtrLevel()->generateBlock('T', 0));
 //                 }
 //             }
-
