@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+#include <cmath>
 
 #include "block.h"
 #include "cell.h"
@@ -26,6 +27,8 @@ private:
     bool isHeavy;
     bool isBlind;
 
+    int level;
+
 public:
     // Testing purpose
     std::vector<std::unique_ptr<Block>> activeBlocks;
@@ -33,8 +36,12 @@ public:
     Cell *getCellAt(int x, int y);
     char getNextBlockType();
     void addBlock(std::unique_ptr<Block> block);
-    int dropBlock(int *numLine);
+    void dropBlock(int *numLine, int *score);
     void changeBlock(Block *block);
+    bool isRowFull(int row);
+    void moveRowDown(int row, int destRow);
+    int updateActiveBlocks();
+    void updateBlocksPosition(int clearedRow);
 
     Block *getCurrentBlock();
     Block *getNextBlock();

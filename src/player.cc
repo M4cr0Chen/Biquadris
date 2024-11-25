@@ -14,10 +14,15 @@ void Player::createBlock()
 int Player::dropBlock()
 {
     int numLine = 0;
-    int score = 0;
-    score = board.dropBlock(&numLine);
+    int dropScore = 0;
+    board.dropBlock(&numLine, &dropScore);
+
+    int lineScore = std::pow(numLine + levelNum, 2);
+
+    score.addToCurrentScore(dropScore);
+    score.addToCurrentScore(lineScore);
     
-    return score;
+    return numLine;
 }
 
 void Player::setLevel(int levelNum)

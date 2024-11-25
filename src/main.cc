@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    std::string s1 = "IJLSZOT", s2 = "TZOJILS";
+    std::string s1 = "IO", s2 = "I";
     Game game(false, s1, s2);
 
     Observer *o = new TextObserver(game);
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
             bool suceedDown = game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveDown();
             if (suceedDown == false)
             {
-                game.getCurrentPlayer()->dropBlock();
+                int linesCleared = game.getCurrentPlayer()->dropBlock();
                 game.switchTurn();
 
             // game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
