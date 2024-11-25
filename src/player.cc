@@ -3,7 +3,7 @@
 #include "level0.h"
 
 // Player::Player() : levelNum{0} {}
-Player::Player(bool isPlayerOne, std::string s1, std::string s2) : level{new Level0{isPlayerOne, s1, s2}}, levelNum{0}, s1{s1}, s2{s2} {}
+Player::Player(bool isPlayerOne, std::string s1, std::string s2) : level{new Level0(isPlayerOne, s1, s2)}, levelNum{0}, s1{s1}, s2{s2}, isPlayerOne{isPlayerOne} {}
 
 void Player::createBlock()
 {
@@ -23,7 +23,7 @@ void Player::setLevel(int levelNum)
     switch (levelNum)
     {
     case 0:
-        level = std::make_unique<Level0>();
+        level = std::make_unique<Level0>(isPlayerOne, s1, s2);
         break;
         // case 1:
         //     level = std::make_unique<Level1>();

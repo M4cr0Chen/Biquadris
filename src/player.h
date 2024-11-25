@@ -17,6 +17,7 @@ private:
     Board board;
     int levelNum;
     Score score;
+    bool isPlayerOne;
 
 public:
     Player(bool isPlayerOne, std::string s1, std::string s2);

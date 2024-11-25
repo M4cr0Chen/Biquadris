@@ -17,5 +17,7 @@ std::unique_ptr<Block> Level::giveMeABlock(char blockType, int level) {
         return std::make_unique<ZBlock>(level);
     case 'T':
         return std::make_unique<TBlock>(level);
+    default:
+        return nullptr;
     }
 }

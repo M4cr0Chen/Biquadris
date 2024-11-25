@@ -12,8 +12,8 @@ void Game::initGame()
 
 Game::Game(bool graphicsOn, std::string s1, std::string s2) : 
                isGameOver{false}, isPlayerOneTurn{true},
-               playerOne{std::make_unique<Player>(isPlayerOneTurn, s1, s2)},
-               playerTwo{std::make_unique<Player>(!isPlayerOneTurn, s1, s2)}
+               playerOne{std::make_unique<Player>(true, s1, s2)},
+               playerTwo{std::make_unique<Player>(false, s1, s2)}
 // , textObserver{std::make_unique<TextObserver>(*this)}, graphicsObserver{std::make_unique<GraphicsObserver>(*this)}
 {
     initGame();
