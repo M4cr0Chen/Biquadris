@@ -52,16 +52,19 @@ int main(int argc, char *argv[])
             bool suceedDown = game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveDown();
             if (suceedDown == false)
             {
-                // game.getCurrentPlayer()->dropBlock();
+                game.getCurrentPlayer()->dropBlock();
+                game.switchTurn();
 
-            game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
-            game.switchTurn();
+            // game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
+            // game.switchTurn();
             }
         }
         else if (command == "dr")
         {
-            game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
+            game.getCurrentPlayer()->dropBlock();
             game.switchTurn();
+            // game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
+            // game.switchTurn();
         }
         else if (command == "pX")
         {
@@ -70,6 +73,10 @@ int main(int argc, char *argv[])
         else if (command == "pY")
         {
             std::cout << game.getCurrentPlayer()->getBoard().getCurrentBlock()->getBottomLeftCell()->getY() << std::endl;
+        }
+        else if (command == "size")
+        {
+            std::cout << game.getCurrentPlayer()->getBoard().activeBlocks.size() << std::endl;
         }
         game.updateGameDisplay();
     }
