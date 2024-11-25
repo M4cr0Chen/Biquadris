@@ -42,12 +42,17 @@ void Board::addBlock(std::unique_ptr<Block> newblock)
 
 int Board::dropBlock(int *numLine)
 {
+    if (currentBlock == nullptr)
+    {
+        return 0;
+    }
+    
     currentBlock->drop();
     activeBlocks.push_back(std::move(currentBlock));
 
     // clearline logic
 
-    currentBlock = nullptr;
+    // currentBlock = nullptr;
 
     return 0;
 }

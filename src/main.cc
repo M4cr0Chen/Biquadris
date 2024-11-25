@@ -52,7 +52,10 @@ int main(int argc, char *argv[])
             bool suceedDown = game.getCurrentPlayer()->getBoard().getCurrentBlock()->moveDown();
             if (suceedDown == false)
             {
-                game.getCurrentPlayer()->dropBlock();
+                // game.getCurrentPlayer()->dropBlock();
+
+            game.getCurrentPlayer()->getBoard().getCurrentBlock()->drop();
+            game.switchTurn();
             }
         }
         else if (command == "dr")
