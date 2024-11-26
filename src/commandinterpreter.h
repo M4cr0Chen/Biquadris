@@ -27,7 +27,8 @@ class Interpreter{
         Z,
         T,
         RESTART,
-        RENAME
+        RENAME,
+        DEFAULT
     };
     std::map<std::string, CommandType> commandMap;
     Game* game;
@@ -42,15 +43,8 @@ class Interpreter{
     void runNoRandomCommand(int);
     void runRandomCommand(int);
     void runSequenceCommand(int);
-    void runICommand(int);
-    void runJCommand(int);
-    void runLCommand(int);
-    void runOCommand(int);
-    void runSCommand(int);
-    void runZCommand(int);
-    void runTCommand(int);
-    void runRestartCommand(int);
-    void runRenameCommand(int);
+    void runRenameCommand();
+    void requestSpecialAction();
     public:
      Interpreter(Game* game);
      void interpret(std::string command);
