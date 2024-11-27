@@ -10,13 +10,15 @@
 #include "sblock.h"
 #include "tblock.h"
 #include "zblock.h"
+#include "lvl4block.h"
 
 class Level
 {
 public:
     virtual std::unique_ptr<Block> generateBlock() = 0;
-    virtual void setGenerationNotRandom(std::string file) = 0;
-    virtual void setGenerationRandom() = 0;
+    virtual void setGenerationNotRandom(std::string file);
+    virtual void setGenerationRandom();
+    virtual void setSeed(int seed) = 0;
     std::unique_ptr<Block> giveMeABlock(char blockType, int level);
     ~Level() = default;
 };

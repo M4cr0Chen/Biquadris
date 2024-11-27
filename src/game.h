@@ -25,7 +25,7 @@ private:
     Interpreter interpreter;
 
 public:
-    Game(bool graphicsOn, std::string s1, std::string s2);
+    Game(bool graphicsOn, std::string s1, std::string s2, int seed);
     ~Game() = default;
     void runGame();
     void restartGame();

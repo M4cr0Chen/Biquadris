@@ -44,12 +44,18 @@ void Board::addBlock(std::unique_ptr<Block> newblock)
 void Board::changeBlock(std::unique_ptr<Block> block)
 {
     currentBlock = std::move(block);
-    if (currentBlock->getBlockType() == '*')
-    {
-        currentBlock->init(grid[3][5].get(), grid);
-        return;
-    }
+    // if (currentBlock->getBlockType() == '*')
+    // {
+    //     currentBlock->init(grid[3][5].get(), grid);
+    //     return;
+    // }
     currentBlock->init(grid[3][0].get(), grid);
+}
+
+void Board::insertBlock(std::unique_ptr<Block> block)
+{
+    tempBlock = std::move(block);
+    tempBlock->init(grid[3][5].get(), grid);
 }
 
 bool Board::isRowFull(int row)
@@ -138,6 +144,14 @@ void Board::dropBlock(int *numLine, int *dropScore)
     currentBlock->drop();
     activeBlocks.push_back(std::move(currentBlock));
 
+    // if (tempBlock != nullptr)
+    // {
+    //     currentBlock = std::move(tempBlock);
+    //     currentBlock->drop();
+    //     currentBlock = nullptr;
+    //     tempBlock = nullptr;
+    // }
+
     // std::cout << "activeBlocks size: " << activeBlocks.size() << std::endl;
 
     // clearline logic
@@ -169,10 +183,12 @@ void Board::dropBlock(int *numLine, int *dropScore)
         if (linesFull > 0)
         {
             // reset count
+            count = 0;
         }
         else
         {
             // increment count
+            count++;
         }
     }
 
@@ -182,6 +198,86 @@ void Board::dropBlock(int *numLine, int *dropScore)
         // score += std::pow(linesFull + level, 2);
         *dropScore = score;
     }
+}
+
+void Board::dropStarBlock(int *numLine, int *dropScore) 
+{
+    if (tempBlock == nullptr)
+    {
+        return;
+    }
+
+    int score = 0;
+    int linesFull = 0;
+
+    tempBlock->drop();
+    activeBlocks.push_back(std::move(tempBlock));
+
+    // if (tempBlock != nullptr)
+    // {
+    //     currentBlock = std::move(tempBlock);
+    //     currentBlock->drop();
+    //     currentBlock = nullptr;
+    //     tempBlock = nullptr;
+    // }
+
+    // std::cout << "activeBlocks size: " << activeBlocks.size() << std::endl;
+
+    // clearline logic
+    int blockRow = 17;
+    while (blockRow >= 0)
+    {
+        if (isRowFull(blockRow))
+        {
+            linesFull++;
+            setRowEmpty(blockRow);
+            score += updateActiveBlocks();
+            // moveRowDown(blockRow - 1, blockRow);
+            updateBlocksPosition(blockRow);
+            for (int i = blockRow; i >= 2; i--)
+            {
+                moveRowDown(i - 1, i);
+            }
+        }
+        else
+        {
+            blockRow--;
+        }
+    }
+
+    // currentBlock = nullptr;
+
+    // if (level == 4)
+    // {
+    //     if (linesFull > 0)
+    //     {
+    //         // reset count
+    //         count = 0;
+    //     }
+    //     else
+    //     {
+    //         // increment count
+    //         count++;
+    //     }
+    // }
+
+    if (linesFull > 0)
+    {
+        *numLine += linesFull;
+        // score += std::pow(linesFull + level, 2);
+        *dropScore = score;
+    }
+}
+
+void Board::setLevel(int level)
+{
+    this->level = level;
+    setCount(0);
+}
+
+void Board::setCount(int count)
+{
+    this->count = count;
 }
 
 Block *Board::getCurrentBlock()
@@ -202,6 +298,11 @@ int Board::getHeavyInt()
     }
 
     return 0;
+}
+
+int Board::getCount()
+{
+    return count;
 }
 
 void Board::setBoardBlind()

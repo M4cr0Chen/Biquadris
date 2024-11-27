@@ -12,7 +12,7 @@ class Level1 : public Level
 
 public:
     Level1();
-    void setSeed(int seed);
+    void setSeed(int seed) override;
     std::unique_ptr<Block> generateBlock() override;
 };
 

@@ -34,12 +34,17 @@ std::unique_ptr<Block> Level0::generateBlock()
     return std::move(block);
 }
 
-void Level0::setGenerationNotRandom(std::string file)
-{
-    // Do something
-}
+// void Level0::setGenerationNotRandom(std::string file)
+// {
+//     // Do something
+// }
 
-void Level0::setGenerationRandom()
+// void Level0::setGenerationRandom()
+// {
+//     // Do something
+// }
+
+void Level0::setSeed(int seed)
 {
-    // Do something
+    // Empty Function
 }

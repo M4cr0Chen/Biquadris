@@ -16,10 +16,10 @@ class Level4 : public Level
 
 public:
     Level4();
-    void setSeed(int seed);
+    void setSeed(int seed) override;
     std::unique_ptr<Block> generateBlock() override;
-    void setGenerationNotRandom(std::string file) override;
-    void setGenerationRandom() override;
+    void setGenerationNotRandom(std::string file);
+    void setGenerationRandom();
 };
 
 #endif

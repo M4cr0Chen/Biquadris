@@ -142,13 +142,15 @@ void Interpreter::runDropCommand(int prefix) {
             return;
         }
         int linesCleared = game->getCurrentPlayer()->dropBlock();
+        game->updateGameDisplay();
         if (linesCleared >= 2) {
             requestSpecialAction();
         }
-        /*if (game->getCurrentPlayer()->getBoard().shouldDropStar()) { // level4 extra block
-            game->getCurrentPlayer()->replaceUndroppedBlock('*');
+        std::cout << "should drop star: " << game->getCurrentPlayer()->shouldDroplvl4Block() << std::endl;
+        if (game->getCurrentPlayer()->shouldDroplvl4Block()) { // level4 extra block
+            game->getCurrentPlayer()->insertStarBlock();
             game->getCurrentPlayer()->dropBlock();
-        }*/
+        }
         game->switchTurn();
     }
 }

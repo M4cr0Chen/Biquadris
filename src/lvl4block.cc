@@ -18,6 +18,7 @@ void LVL4Block::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_p
     if (playerLose())
         throw std::runtime_error("Game is over");
     setBottomLeftCell(bottomLeftCell);
+    cells.emplace_back((*gridRef)[3][5].get());
     (*gridRef)[3][5]->setCellType(getBlockType());
 }
 

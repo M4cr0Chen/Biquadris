@@ -10,9 +10,9 @@ void Game::initGame()
     playerTwo->createBlock();
 }
 
-Game::Game(bool graphicsOn, std::string s1, std::string s2) : isGameOver{false}, isPlayerOneTurn{true},
-                                                              playerOne{std::make_unique<Player>(true, s1, s2)},
-                                                              playerTwo{std::make_unique<Player>(false, s1, s2)},
+Game::Game(bool graphicsOn, std::string s1, std::string s2, int seed) : isGameOver{false}, isPlayerOneTurn{true},
+                                                              playerOne{std::make_unique<Player>(true, s1, s2, seed)},
+                                                              playerTwo{std::make_unique<Player>(false, s1, s2, seed)},
                                                               interpreter{Interpreter(this)}
 // , textObserver{std::make_unique<TextObserver>(*this)}, graphicsObserver{std::make_unique<GraphicsObserver>(*this)}
 {

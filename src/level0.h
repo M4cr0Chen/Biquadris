@@ -13,8 +13,9 @@ class Level0 : public Level
 public:
     Level0(bool isPlayerOne, std::string s1, std::string s2);
     std::unique_ptr<Block> generateBlock() override;
-    void setGenerationNotRandom(std::string file) override;
-    void setGenerationRandom() override;
+    // void setGenerationNotRandom(std::string file) override;
+    // void setGenerationRandom() override;
+    void setSeed(int seed) override;
 };
 
 #endif

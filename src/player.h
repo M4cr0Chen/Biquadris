@@ -18,18 +18,23 @@ private:
     int levelNum;
     Score score;
     bool isPlayerOne;
+    int seed;
 
 public:
-    Player(bool isPlayerOne, std::string s1, std::string s2);
+    Player(bool isPlayerOne, std::string s1, std::string s2, int seed);
     void createBlock();
     int dropBlock();
     void setLevel(int levelNum);
     int getIntLevel();
+    int getSeed();
+    void setSeed(int seed);
     Level *getPtrLevel();
     Score &getScore();
     Board &getBoard();
     void replaceUndroppedBlock(char blockType);
+    void insertStarBlock();
     void restartPlayer();
+    bool shouldDroplvl4Block();
 };
 
 #endif

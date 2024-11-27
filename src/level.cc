@@ -17,7 +17,17 @@ std::unique_ptr<Block> Level::giveMeABlock(char blockType, int level) {
         return std::make_unique<ZBlock>(level);
     case 'T':
         return std::make_unique<TBlock>(level);
+    case '*':
+        return std::make_unique<LVL4Block>(level);
     default:
         return nullptr;
     }
+}
+
+void Level::setGenerationNotRandom(std::string file) {
+    // Empty Function
+}
+
+void Level::setGenerationRandom() {
+    // Empty Function
 }

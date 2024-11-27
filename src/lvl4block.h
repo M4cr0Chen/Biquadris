@@ -1,5 +1,5 @@
-#ifndef LBLOCK_H
-#define LBLOCK_H
+#ifndef LVL4BLOCK_H
+#define LVL4BLOCK_H
 
 #include "block.h"
 
