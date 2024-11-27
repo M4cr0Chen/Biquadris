@@ -37,7 +37,7 @@ public:
     char getNextBlockType();
     void addBlock(std::unique_ptr<Block> block);
     void dropBlock(int *numLine, int *score);
-    void changeBlock(Block *block);
+    void changeBlock(std::unique_ptr<Block> block);
     bool isRowFull(int row);
     void moveRowDown(int row, int destRow);
     int updateActiveBlocks();

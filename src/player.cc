@@ -21,9 +21,9 @@ int Player::dropBlock()
     int lineScore = std::pow(numLine + levelNum, 2);
 
     score.addToCurrentScore(dropScore);
-    std::cout<< "dropscore: " << dropScore << ", " << "linescore: " << lineScore << std::endl;
+    std::cout << "dropscore: " << dropScore << ", " << "linescore: " << lineScore << std::endl;
     score.addToCurrentScore(lineScore);
-    
+
     return numLine;
 }
 
@@ -60,12 +60,14 @@ Board &Player::getBoard()
     return board;
 }
 
-void Player::replaceUndroppedBlock(char blockType) {
+void Player::replaceUndroppedBlock(char blockType)
+{
     std::unique_ptr<Block> block = level->giveMeABlock(blockType, levelNum);
-    board.addBlock(std::move(block));
+    board.changeBlock(std::move(block));
 }
 
-void Player::restartPlayer() {
+void Player::restartPlayer()
+{
     levelNum = 0;
     board = Board();
     score.resetCurrentScore();

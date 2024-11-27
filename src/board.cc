@@ -41,6 +41,17 @@ void Board::addBlock(std::unique_ptr<Block> newblock)
     currentBlock->init(grid[3][0].get(), grid);
 }
 
+void Board::changeBlock(std::unique_ptr<Block> block)
+{
+    currentBlock = std::move(block);
+    if (currentBlock->getBlockType() == '*')
+    {
+        currentBlock->init(grid[3][5].get(), grid);
+        return;
+    }
+    currentBlock->init(grid[3][0].get(), grid);
+}
+
 bool Board::isRowFull(int row)
 {
     for (int i = 0; i < 11; i++)
