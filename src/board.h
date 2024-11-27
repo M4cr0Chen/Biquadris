@@ -49,6 +49,7 @@ public:
     void setBoardBlind();
     void setBoardHeavy();
     bool isGameOver();
+    void setRowEmpty(int row);
 };
 
 #endif
