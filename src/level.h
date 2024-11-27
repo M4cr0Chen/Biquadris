@@ -15,6 +15,8 @@ class Level
 {
 public:
     virtual std::unique_ptr<Block> generateBlock() = 0;
+    virtual void setGenerationNotRandom(std::string file) = 0;
+    virtual void setGenerationRandom() = 0;
     std::unique_ptr<Block> giveMeABlock(char blockType, int level);
     ~Level() = default;
 };

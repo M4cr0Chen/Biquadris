@@ -62,7 +62,7 @@ void Interpreter::runLeftCommand(int prefix) {
     int downHeavy = game->getCurrentPlayer()->getBoard().getHeavyInt();
 
     for (int i = 0; i < down; i++) {
-        currentBlock->moveDown()；
+        currentBlock->moveDown();
     }
 
     for (int i = 0; i < prefix; i++) {
@@ -166,7 +166,7 @@ void Interpreter::runNoRandomCommand(int prefix) {
     string filename;
     if (player->getIntLevel() == 3 || player->getIntLevel() == 4) {
         if (std::cin >> filename) {
-            player.level->noRandom(filename);
+            player->getPtrLevel()->setGenerationNotRandom(filename);
         }
     }
    
@@ -177,7 +177,7 @@ void Interpreter::runRandomCommand(int prefix) {
     string filename;
     if (player->getIntLevel() == 3 || player->getIntLevel() == 4) {
         if (std::cin >> filename) {
-            player.level->random();
+            player->getPtrLevel()->setGenerationRandom();
         }
     }
 }
@@ -211,16 +211,16 @@ void Interpreter::requestSpecialAction(){
     Player* opponent = game->getNonCurrentPlayer();
     while (cin >> specialAction) {
         if (specialAction == "blind") {
-            opponent->getBoard().setBlind();
+            opponent->getBoard().setBoardBlind();
             break;
         } else if (specialAction == "heavy") {
-            opponent->getBoard().setHeavy();
+            opponent->getBoard().setBoardHeavy();
             break;
         } else if (specialAction == "force") {
             char block;
             if (cin >> block){
                 if(block == 'I' || block == 'J' || block == 'L'|| block == 'O' || block == 'S' || block == 'T' || block == 'Z') {
-                    opponent->changeBlock(block);
+                    opponent->replaceUndroppedBlock(block);
                 }
                 cout << "bad letter" << endl;
             }

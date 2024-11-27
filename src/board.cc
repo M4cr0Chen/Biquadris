@@ -1,4 +1,5 @@
 #include "board.h"
+#include <iostream>
 
 Board::Board() : nextBlockType{' '}, currentBlock{nullptr}, nextBlock{nullptr}, level{0}, isHeavy{false}, isBlind{false}
 {
@@ -116,6 +117,8 @@ void Board::dropBlock(int *numLine, int *dropScore)
     currentBlock->drop();
     activeBlocks.push_back(std::move(currentBlock));
 
+    // std::cout << "activeBlocks size: " << activeBlocks.size() << std::endl;
+
     // clearline logic
     int blockRow = 17;
     while (blockRow >= 0) {
@@ -145,7 +148,7 @@ void Board::dropBlock(int *numLine, int *dropScore)
     if (linesFull > 0)
     {
         *numLine = linesFull;
-        score += std::pow(linesFull + level, 2);
+        // score += std::pow(linesFull + level, 2);
         *dropScore = score;
     }
 
@@ -169,4 +172,30 @@ int Board::getHeavyInt()
     }
 
     return 0;
+}
+
+void Board::setBoardBlind()
+{
+    isBlind = !isBlind;
+}
+
+void Board::setBoardHeavy()
+{
+    isHeavy = !isHeavy;
+}
+
+bool Board::isGameOver()
+{
+    // if (currentBlock == nullptr)
+    // {
+    //     return false;
+    // }
+
+    for (int i = 0; i < 11; i++) {
+        if (grid[3][i]->getCellType() != ' ') {
+            return true;
+        }
+    }
+
+    return false;
 }

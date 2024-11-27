@@ -1,0 +1,1 @@
+oldmain.o: oldmain.cc

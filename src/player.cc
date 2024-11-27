@@ -1,6 +1,7 @@
 #include "player.h"
 #include "level.h"
 #include "level0.h"
+#include <iostream>
 
 // Player::Player() : levelNum{0} {}
 Player::Player(bool isPlayerOne, std::string s1, std::string s2) : level{new Level0(isPlayerOne, s1, s2)}, levelNum{0}, s1{s1}, s2{s2}, isPlayerOne{isPlayerOne} {}
@@ -20,6 +21,7 @@ int Player::dropBlock()
     int lineScore = std::pow(numLine + levelNum, 2);
 
     score.addToCurrentScore(dropScore);
+    std::cout<< "dropscore: " << dropScore << ", " << "linescore: " << lineScore << std::endl;
     score.addToCurrentScore(lineScore);
     
     return numLine;
@@ -56,4 +58,16 @@ Score &Player::getScore()
 Board &Player::getBoard()
 {
     return board;
+}
+
+void Player::replaceUndroppedBlock(char blockType) {
+    std::unique_ptr<Block> block = level->giveMeABlock(blockType, levelNum);
+    board.addBlock(std::move(block));
+}
+
+void Player::restartPlayer() {
+    levelNum = 0;
+    board = Board();
+    score.resetCurrentScore();
+    level = std::make_unique<Level0>(isPlayerOne, s1, s2);
 }

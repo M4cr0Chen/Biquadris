@@ -3,8 +3,10 @@
 
 #include <memory>
 #include <string>
+#include <iostream>
 #include "subject.h"
 #include "player.h"
+#include "commandinterpreter.h"
 
 // Forward declarations
 class Player;
@@ -20,6 +22,8 @@ private:
     std::unique_ptr<Player> playerOne;
     std::unique_ptr<Player> playerTwo;
 
+    Interpreter interpreter;
+
 public:
     Game(bool graphicsOn, std::string s1, std::string s2);
     ~Game() = default;
@@ -33,6 +37,7 @@ public:
     Player *getPlayerOne();
     Player *getPlayerTwo();
     Player *getCurrentPlayer();
+    Player *getNonCurrentPlayer();
 };
 
 #endif

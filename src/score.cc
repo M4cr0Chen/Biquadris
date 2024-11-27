@@ -20,6 +20,10 @@ void Score::setCurrentScore(int score)
 void Score::addToCurrentScore(int score)
 {
     currentScore += score;
+    if (currentScore > highScore)
+    {
+        highScore = currentScore;
+    }
 }
 
 void Score::resetCurrentScore()

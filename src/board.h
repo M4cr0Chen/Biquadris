@@ -46,6 +46,9 @@ public:
     Block *getCurrentBlock();
     Block *getNextBlock();
     int getHeavyInt();
+    void setBoardBlind();
+    void setBoardHeavy();
+    bool isGameOver();
 };
 
 #endif

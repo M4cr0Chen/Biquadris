@@ -28,6 +28,8 @@ public:
     Level *getPtrLevel();
     Score &getScore();
     Board &getBoard();
+    void replaceUndroppedBlock(char blockType);
+    void restartPlayer();
 };
 
 #endif
