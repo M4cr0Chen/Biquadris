@@ -142,11 +142,12 @@ void Interpreter::runDropCommand(int prefix) {
             return;
         }
         int linesCleared = game->getCurrentPlayer()->dropBlock();
-        game->updateGameDisplay();
+        // game->updateGameDisplay();
         if (linesCleared >= 2) {
             requestSpecialAction();
         }
         std::cout << "should drop star: " << game->getCurrentPlayer()->shouldDroplvl4Block() << std::endl;
+        std::cout << "isheavy: " << game->getCurrentPlayer()->getBoard().getIsHeavy() << std::endl;
         if (game->getCurrentPlayer()->shouldDroplvl4Block()) { // level4 extra block
             game->getCurrentPlayer()->insertStarBlock();
             game->getCurrentPlayer()->dropBlock();
@@ -156,10 +157,21 @@ void Interpreter::runDropCommand(int prefix) {
 }
 
 void Interpreter::runLevelUpCommand(int prefix) {
+    if (prefix + game->getCurrentPlayer()->getIntLevel() > 4) {
+        game->getCurrentPlayer()->setLevel(4);
+        return;
+    }
     game->getCurrentPlayer()->setLevel(game->getCurrentPlayer()->getIntLevel() + prefix);
+    int level = game->getCurrentPlayer()->getIntLevel();
+    char blockType = game->getCurrentPlayer()->getBoard().getCurrentBlock()->getBlockType();
+    game->getCurrentPlayer()->getBoard().changeCurrentAndNextBlock(game->getCurrentPlayer()->getPtrLevel()->giveMeABlock(blockType, level), game->getCurrentPlayer()->getPtrLevel()->generateBlock());
 }
 
 void Interpreter::runLevelDownCommand(int prefix) {
+    if (game->getCurrentPlayer()->getIntLevel() - prefix < 0) {
+        game->getCurrentPlayer()->setLevel(0);
+        return;
+    }
    game->getCurrentPlayer()->setLevel(game->getCurrentPlayer()->getIntLevel() - prefix);
 }
 

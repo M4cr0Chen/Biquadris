@@ -39,11 +39,21 @@ void TextObserver::printPlayersBoard()
     {
         for (int j = 0; j < 11; j++)
         {
+            if (playerOneBoard.getIsBlind() && i >= 2 && i <= 11 && j >= 2 && j <= 8)
+            {
+                std::cout << "?";
+                continue;
+            }
             std::cout << playerOneBoard.getCellAt(i, j)->getCellType();
         }
         std::cout << "       ";
         for (int j = 0; j < 11; j++)
         {
+            if (playerTwoBoard.getIsBlind() && i >= 2 && i <= 11 && j >= 2 && j <= 8)
+            {
+                std::cout << "?";
+                continue;
+            }   
             std::cout << playerTwoBoard.getCellAt(i, j)->getCellType();
         }
         std::cout << std::endl;

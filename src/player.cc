@@ -17,6 +17,7 @@ Player::Player(bool isPlayerOne, std::string s1, std::string s2, int seed) :
 
 void Player::createBlock()
 {
+    std::cout << "levelnum: " << levelNum << std::endl;
     std::unique_ptr<Block> block = level->generateBlock();
     board.addBlock(std::move(block));
 }
@@ -124,6 +125,7 @@ Board &Player::getBoard()
 
 void Player::replaceUndroppedBlock(char blockType)
 {
+    std::cout << "levelnum: " << levelNum << std::endl;
     std::unique_ptr<Block> block = level->giveMeABlock(blockType, levelNum);
     board.changeBlock(std::move(block));
 }
@@ -143,5 +145,5 @@ void Player::restartPlayer()
 
 bool Player::shouldDroplvl4Block()
 {
-    return levelNum == 4 && board.getCount() % 5 == 0;
+    return levelNum == 4 && (board.getCount() % 5 == 0 && board.getCount() != 0);
 }

@@ -58,6 +58,13 @@ void Board::insertBlock(std::unique_ptr<Block> block)
     tempBlock->init(grid[3][5].get(), grid);
 }
 
+void Board::changeCurrentAndNextBlock(std::unique_ptr<Block> newCurrentBlock, std::unique_ptr<Block> newNextBlock)
+{
+    currentBlock = std::move(newCurrentBlock);
+    nextBlock = std::move(newNextBlock);
+    currentBlock->init(grid[3][0].get(), grid);
+}
+
 bool Board::isRowFull(int row)
 {
     for (int i = 0; i < 11; i++)
@@ -152,7 +159,7 @@ void Board::dropBlock(int *numLine, int *dropScore)
     //     tempBlock = nullptr;
     // }
 
-    // std::cout << "activeBlocks size: " << activeBlocks.size() << std::endl;
+    std::cout << "activeBlocks size before clear: " << activeBlocks.size() << std::endl;
 
     // clearline logic
     int blockRow = 17;
@@ -175,6 +182,8 @@ void Board::dropBlock(int *numLine, int *dropScore)
             blockRow--;
         }
     }
+
+    std::cout << "activeBlocks size after clear: " << activeBlocks.size() << std::endl;
 
     // currentBlock = nullptr;
 
@@ -313,6 +322,16 @@ void Board::setBoardBlind()
 void Board::setBoardHeavy()
 {
     isHeavy = !isHeavy;
+}
+
+bool Board::getIsBlind()
+{
+    return isBlind;
+}
+
+bool Board::getIsHeavy()
+{
+    return isHeavy;
 }
 
 bool Board::isGameOver()

@@ -1,5 +1,6 @@
 #include "block.h"
 #include <cmath>
+#include <iostream>
 
 int Block::updateBlock()
 {
@@ -13,6 +14,7 @@ int Block::updateBlock()
 
     if (cells.empty())
     {
+        std::cout << "block score: " << std::pow(level + 1, 2) << std::endl;
         return std::pow(level + 1, 2);
     }
 

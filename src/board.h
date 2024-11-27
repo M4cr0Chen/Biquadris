@@ -46,6 +46,7 @@ public:
     void moveRowDown(int row, int destRow);
     int updateActiveBlocks();
     void updateBlocksPosition(int clearedRow);
+    void changeCurrentAndNextBlock(std::unique_ptr<Block> newCurrentBlock, std::unique_ptr<Block> newNextBlock);
 
     Block *getCurrentBlock();
     Block *getNextBlock();
@@ -55,6 +56,8 @@ public:
     void setCount(int count);
     void setBoardBlind();
     void setBoardHeavy();
+    bool getIsBlind();
+    bool getIsHeavy();
     bool isGameOver();
     void setRowEmpty(int row);
 };
