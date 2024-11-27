@@ -61,39 +61,59 @@ void Interpreter::runLeftCommand(int prefix) {
     int down = linesToDrop(game->getCurrentPlayer()->getIntLevel());
     int downHeavy = game->getCurrentPlayer()->getBoard().getHeavyInt();
 
-    for (int i = 0; i < down; i++) {
-        currentBlock->moveDown();
-    }
-
+    // First do all horizontal movements
     for (int i = 0; i < prefix; i++) {
-        currentBlock->moveLeft();
-        for (int i = 0; i < downHeavy; i++) {
-            if (!currentBlock->moveDown()){
-                currentBlock->drop();
-                game->switchTurn();
-                return;
-            }
+        if (!currentBlock->moveLeft()) {
+            break;
         }
     }
-   
+
+    // Then apply level-based drops
+    for (int i = 0; i < down; i++) {
+        if (!currentBlock->moveDown()) {
+            currentBlock->drop();
+            game->switchTurn();
+            return;
+        }
+    }
+
+    // Finally apply heavy drops
+    for (int i = 0; i < downHeavy; i++) {
+        if (!currentBlock->moveDown()) {
+            currentBlock->drop();
+            game->switchTurn();
+            return;
+        }
+    }
 }
 
 void Interpreter::runRightCommand(int prefix) {
     Block * currentBlock = game->getCurrentPlayer()->getBoard().getCurrentBlock();
     int down = linesToDrop(game->getCurrentPlayer()->getIntLevel());
     int downHeavy = game->getCurrentPlayer()->getBoard().getHeavyInt();
-    for (int i = 0; i < down; i++) {
-        currentBlock->moveDown();    
+    
+    // First do all horizontal movements
+    for (int i = 0; i < prefix; i++) {
+        if (!currentBlock->moveRight()) {
+            break;
+        }
     }
 
-    for (int i = 0; i < prefix; i++) {
-        currentBlock->moveRight();
-        for (int i = 0; i < downHeavy; i++) {
-            if (!currentBlock->moveDown()){
-                currentBlock->drop();
-                game->switchTurn();
-                return;
-            }
+    // Then apply level-based drops
+    for (int i = 0; i < down; i++) {
+        if (!currentBlock->moveDown()) {
+            currentBlock->drop();
+            game->switchTurn();
+            return;
+        }
+    }
+
+    // Finally apply heavy drops
+    for (int i = 0; i < downHeavy; i++) {
+        if (!currentBlock->moveDown()) {
+            currentBlock->drop();
+            game->switchTurn();
+            return;
         }
     }
 }
