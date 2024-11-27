@@ -2,6 +2,7 @@
 #define BLOCK_H
 
 #include <vector>
+#include <stdexcept>
 
 #include "board.h"
 #include "cell.h"
@@ -24,7 +25,7 @@ public:
     Block() : bottomLeftCell{nullptr}, board{nullptr}, blockType{' '}, level{0} {}
 
     virtual void init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid) = 0;
-    virtual ~Block() = default;
+    virtual ~Block() = 0;
     bool moveLeft();
     bool moveRight();
     bool moveDown();
@@ -51,6 +52,7 @@ public:
     Cell *getBottomLeftCell();
     void setBottomLeftCell(Cell *cell);
     int updateBlock();
+    bool playerLose();
 };
 
 #endif

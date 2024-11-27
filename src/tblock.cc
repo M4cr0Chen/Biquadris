@@ -15,6 +15,8 @@ void TBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<
     gridRef = &grid;
     // std::vector<Cell *> cells = getCells();
     // Board *board = getBoard();
+    if (playerLose())
+        throw std::runtime_error("Game is over");
     setBottomLeftCell(bottomLeftCell);
     cells.emplace_back((*gridRef)[2][0].get());
     cells.emplace_back((*gridRef)[2][1].get());
@@ -138,4 +140,13 @@ bool TBlock::rotateCounterClockwise()
         success = rotateClockwise();
     }
     return success;
+}
+
+TBlock::~TBlock()
+{
+    bottomLeftCell = nullptr;
+    for (Cell *cell : cells)
+    {
+        cell->setCellType(' ');
+    }
 }

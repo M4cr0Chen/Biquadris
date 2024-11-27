@@ -15,6 +15,8 @@ void LBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<
     gridRef = &grid;
     // std::vector<Cell *> cells = getCells();
     // Board *board = getBoard();
+    if (playerLose())
+        throw std::runtime_error("Game is over");
     setBottomLeftCell(bottomLeftCell);
     cells.emplace_back(bottomLeftCell);
     cells.emplace_back((*gridRef)[3][1].get());
@@ -149,4 +151,13 @@ bool LBlock::rotateCounterClockwise()
         success = rotateClockwise();
     }
     return success;
+}
+
+LBlock::~LBlock()
+{
+    bottomLeftCell = nullptr;
+    for (Cell *cell : cells)
+    {
+        cell->setCellType(' ');
+    }
 }

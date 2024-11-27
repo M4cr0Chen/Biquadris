@@ -110,6 +110,19 @@ int Block::getLevel()
     return level;
 }
 
+bool Block::playerLose()
+{
+    for (int i = 0; i < 11; i++)
+    {
+        if ((*gridRef)[3][i]->getCellType() != ' ')
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 bool Block::moveLeft()
 {
     int x = getBottomLeftCell()->getX();

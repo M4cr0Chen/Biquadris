@@ -10,31 +10,33 @@ void Game::initGame()
     playerTwo->createBlock();
 }
 
-Game::Game(bool graphicsOn, std::string s1, std::string s2) : 
-               isGameOver{false}, isPlayerOneTurn{true},
-               playerOne{std::make_unique<Player>(true, s1, s2)},
-               playerTwo{std::make_unique<Player>(false, s1, s2)},
-               interpreter{Interpreter(this)}
+Game::Game(bool graphicsOn, std::string s1, std::string s2) : isGameOver{false}, isPlayerOneTurn{true},
+                                                              playerOne{std::make_unique<Player>(true, s1, s2)},
+                                                              playerTwo{std::make_unique<Player>(false, s1, s2)},
+                                                              interpreter{Interpreter(this)}
 // , textObserver{std::make_unique<TextObserver>(*this)}, graphicsObserver{std::make_unique<GraphicsObserver>(*this)}
 {
     // initGame();
 }
 
-void Game::runGame() {
+void Game::runGame()
+{
     initGame();
     updateGameDisplay();
 
     std::string command;
-    while (std::cin >> command) {
+    while (std::cin >> command)
+    {
         interpreter.interpret(command);
         updateGameDisplay();
     }
 }
 
-void Game::restartGame() {
+void Game::restartGame()
+{
     isPlayerOneTurn = true;
     isGameOver = false;
-    
+
     playerOne->restartPlayer();
     playerTwo->restartPlayer();
 
@@ -48,17 +50,25 @@ void Game::updateGameDisplay()
 
 void Game::switchTurn()
 {
-    bool playerGameOver = getCurrentPlayer()->getBoard().isGameOver();
-    std::cout << "isplayerone: " << isPlayerOneTurn << std::endl;
-    std::cout << "isGameover: " << std::boolalpha << playerGameOver << std::endl;
-    if (playerGameOver)
+    // bool playerGameOver = getCurrentPlayer()->getBoard().isGameOver();
+    // std::cout << "isplayerone: " << isPlayerOneTurn << std::endl;
+    // std::cout << "isGameover: " << std::boolalpha << playerGameOver << std::endl;
+    // if (playerGameOver)
+    // {
+    //     isGameOver = true;
+    //     return;
+    // }
+    try
     {
-        isGameOver = true;
-        return;
+        std::unique_ptr<Block> block = getCurrentPlayer()->getPtrLevel()->generateBlock();
+        getCurrentPlayer()->getBoard().addBlock(std::move(block));
+        isPlayerOneTurn = !isPlayerOneTurn;
     }
-    std::unique_ptr<Block> block = getCurrentPlayer()->getPtrLevel()->generateBlock();
-    getCurrentPlayer()->getBoard().addBlock(std::move(block));
-    isPlayerOneTurn = !isPlayerOneTurn;
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+        isGameOver = true;
+    }
 }
 
 bool Game::getIsGameOver() const
