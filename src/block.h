@@ -33,7 +33,7 @@ public:
     bool isValidMove(std::vector<Cell *> newCells);
     virtual bool rotateClockwise() = 0;
     virtual bool rotateCounterClockwise() = 0;
-    std::vector<Cell *> getCells() const;
+    std::vector<Cell *> getCells();
     void setBlockEmpty();
     void setBlockCellType(char type);
     Board *getBoard() const;

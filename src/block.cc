@@ -31,7 +31,7 @@ void Block::setBoard(Board *board)
     this->board = board;
 }
 
-std::vector<Cell *> Block::getCells() const
+std::vector<Cell *> Block::getCells()
 {
     return cells;
 }
@@ -209,6 +209,7 @@ bool Block::moveDown()
 
     if (isValidMove(newCells))
     {
+        std::cout << "move down is valid?" << isValidMove(newCells) << std::endl;
         for (Cell *cell : newCells)
         {
             cell->setCellType(getBlockType());

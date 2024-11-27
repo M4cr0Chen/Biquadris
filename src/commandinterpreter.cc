@@ -60,6 +60,8 @@ void Interpreter::runLeftCommand(int prefix) {
     Block * currentBlock = game->getCurrentPlayer()->getBoard().getCurrentBlock();
     int down = linesToDrop(game->getCurrentPlayer()->getIntLevel());
     int downHeavy = game->getCurrentPlayer()->getBoard().getHeavyInt();
+    std::cout << "curplayer level: " << game->getCurrentPlayer()->getIntLevel() << "curplayer down: " << down 
+    << "curplayer downHeavy: " << downHeavy << std::endl;
 
     // First do all horizontal movements
     for (int i = 0; i < prefix; i++) {
@@ -71,16 +73,16 @@ void Interpreter::runLeftCommand(int prefix) {
     // Then apply level-based drops
     for (int i = 0; i < down; i++) {
         if (!currentBlock->moveDown()) {
-            currentBlock->drop();
-            game->switchTurn();
-            return;
+            // currentBlock->drop();
+            // game->switchTurn();
+            // return;
         }
     }
 
     // Finally apply heavy drops
     for (int i = 0; i < downHeavy; i++) {
         if (!currentBlock->moveDown()) {
-            currentBlock->drop();
+            game->getCurrentPlayer()->dropBlock();
             game->switchTurn();
             return;
         }
@@ -91,6 +93,8 @@ void Interpreter::runRightCommand(int prefix) {
     Block * currentBlock = game->getCurrentPlayer()->getBoard().getCurrentBlock();
     int down = linesToDrop(game->getCurrentPlayer()->getIntLevel());
     int downHeavy = game->getCurrentPlayer()->getBoard().getHeavyInt();
+    std::cout << "curplayer level: " << game->getCurrentPlayer()->getIntLevel() << "curplayer down: " << down 
+    << "curplayer downHeavy: " << downHeavy << std::endl;
     
     // First do all horizontal movements
     for (int i = 0; i < prefix; i++) {
@@ -102,16 +106,18 @@ void Interpreter::runRightCommand(int prefix) {
     // Then apply level-based drops
     for (int i = 0; i < down; i++) {
         if (!currentBlock->moveDown()) {
-            currentBlock->drop();
-            game->switchTurn();
-            return;
+            // currentBlock->drop();
+            // game->switchTurn();
+            // return;
         }
     }
 
     // Finally apply heavy drops
     for (int i = 0; i < downHeavy; i++) {
+        std::cout << "into heavy drop loop" << std::endl;
         if (!currentBlock->moveDown()) {
-            currentBlock->drop();
+            std::cout << "dropping heavily" << std::endl;
+            game->getCurrentPlayer()->dropBlock();
             game->switchTurn();
             return;
         }

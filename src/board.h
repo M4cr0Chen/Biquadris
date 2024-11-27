@@ -48,8 +48,11 @@ public:
     void updateBlocksPosition(int clearedRow);
     void changeCurrentAndNextBlock(std::unique_ptr<Block> newCurrentBlock, std::unique_ptr<Block> newNextBlock);
 
+    void moveCellsDownByOne(std::vector<Cell *> cellsToBeMoved);
+
     Block *getCurrentBlock();
     Block *getNextBlock();
+    Block *getTempBlock();
     int getHeavyInt();
     void setLevel(int level);
     int getCount();

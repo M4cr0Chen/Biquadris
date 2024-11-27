@@ -48,15 +48,18 @@ int Player::dropBlock()
 
 // check star block
 
-    board.dropStarBlock(&numLine, &dropScore);
-    if (numLine > 0)
-    {
-        lineScore = std::pow(numLine + levelNum, 2);
+    if (getBoard().getTempBlock() != nullptr) {
+        board.dropStarBlock(&numLine, &dropScore);
+        if (numLine > 0)
+        {
+            lineScore = std::pow(numLine + levelNum, 2);
+        }
+
+        score.addToCurrentScore(dropScore);
+        std::cout << "dropSTARscore: " << dropScore << ", " << "linescore: " << lineScore << std::endl;
+        score.addToCurrentScore(lineScore);
     }
 
-    score.addToCurrentScore(dropScore);
-    std::cout << "dropSTARscore: " << dropScore << ", " << "linescore: " << lineScore << std::endl;
-    score.addToCurrentScore(lineScore);
 
     return numLine;
 }

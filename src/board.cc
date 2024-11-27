@@ -91,6 +91,7 @@ int Board::updateActiveBlocks()
     int score = 0;
     for (int i = activeBlocks.size() - 1; i >= 0; i--)
     {
+        std::cout << "activeBlocks size: " << activeBlocks.size() << std::endl;
         int blockScore = 0;
         blockScore = activeBlocks[i]->updateBlock();
 
@@ -105,11 +106,12 @@ int Board::updateActiveBlocks()
     return score;
 }
 
-void moveCellsDownByOne(std::vector<Cell *> cellsToBeMoved)
+void Board::moveCellsDownByOne(std::vector<Cell *> cellsToBeMoved)
 {
     for (Cell *cell : cellsToBeMoved)
     {
-        cell->setCoordinate(cell->getX() + 1, cell->getY());
+        //cell->setCoordinate(cell->getX() + 1, cell->getY());
+        cell = grid[cell->getX() + 1][cell->getY()].get();
     }
 }
 
@@ -297,6 +299,11 @@ Block *Board::getCurrentBlock()
 Block *Board::getNextBlock()
 {
     return nextBlock.get();
+}
+
+Block *Board::getTempBlock()
+{
+    return tempBlock.get();
 }
 
 int Board::getHeavyInt()
