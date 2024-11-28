@@ -17,6 +17,13 @@ Game::Game(bool graphicsOn, std::string s1, std::string s2, int seed, int startL
                                                               startLevel{startLevel}
 // , textObserver{std::make_unique<TextObserver>(*this)}, graphicsObserver{std::make_unique<GraphicsObserver>(*this)}
 {
+    std::unique_ptr<Observer> textObserver = std::make_unique<TextObserver>(*this);
+    attach(std::move(textObserver));
+    if (graphicsOn)
+    {
+        std::unique_ptr<Observer> graphicsObserver = std::make_unique<GraphicsObserver>(*this);
+        attach(std::move(graphicsObserver));
+    }
     // initGame();
 }
 

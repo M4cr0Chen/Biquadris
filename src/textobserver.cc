@@ -149,11 +149,6 @@ void TextObserver::printNextBlock()
     }
 }
 
-TextObserver::TextObserver(Game &game) : game(game)
-{
-    game.attach(std::unique_ptr<Observer>(this));
-}
-
 void TextObserver::drawBoard()
 {
     printLevel();
@@ -167,6 +162,11 @@ void TextObserver::drawBoard()
     printDividerLine();
 
     printNextBlock();
+}
+
+TextObserver::TextObserver(Game &game) : game(game)
+{
+    // game.attach(std::unique_ptr<Observer>(this));
 }
 
 TextObserver::~TextObserver() = default;

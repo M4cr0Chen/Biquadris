@@ -20,7 +20,7 @@ public:
     virtual void setGenerationRandom();
     virtual void setSeed(int seed) = 0;
     std::unique_ptr<Block> giveMeABlock(char blockType, int level);
-    ~Level() = default;
+    virtual ~Level() = default;
 };
 
 #endif

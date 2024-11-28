@@ -33,7 +33,5 @@ int main(int argc, char *argv[])
 
     Game game(graphicsOn, s1, s2, seed, startLevel);
 
-    Observer *o = new TextObserver(game);
-
     game.runGame();
 }
