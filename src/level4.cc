@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include "level4.h"
 
 Level4::Level4(): nonrandom{false}, index{0}, indexCount{0} {}
@@ -40,11 +41,17 @@ char Level4::randomCharGenerator() {
 
 void Level4::setGenerationNotRandom(std::string file) {
     nonrandom = true;
-    std::ifstream fileStream{file};
-    char c;
-    while (fileStream >> c) {
-        sequence.push_back(c);
+    try {
+        std::ifstream fileStream{file};
+        char c;
+        while (fileStream >> c) {
+            sequence.push_back(c);
+        }
+    } catch(...) {
+        std::cerr << "File not found" << std::endl;
+        return;
     }
+    
 }
 
 void Level4::setGenerationRandom() {

@@ -18,6 +18,7 @@ private:
     bool isGameOver;
     bool isPlayerOneTurn;
     void initGame();
+    int startLevel;
 
     std::unique_ptr<Player> playerOne;
     std::unique_ptr<Player> playerTwo;
@@ -25,7 +26,7 @@ private:
     Interpreter interpreter;
 
 public:
-    Game(bool graphicsOn, std::string s1, std::string s2, int seed);
+    Game(bool graphicsOn, std::string s1, std::string s2, int seed, int startLevel);
     ~Game() = default;
     void runGame();
     void restartGame();

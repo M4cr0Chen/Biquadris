@@ -206,7 +206,16 @@ void Interpreter::runNoRandomCommand(int prefix) {
     string filename;
     if (player->getIntLevel() == 3 || player->getIntLevel() == 4) {
         if (std::cin >> filename) {
-            player->getPtrLevel()->setGenerationNotRandom(filename);
+            try {
+                player->getPtrLevel()->setGenerationNotRandom(filename);
+            }
+            catch (std::exception& e) {
+                cerr << "bad file name" << endl;
+            }
+
+            int level = game->getCurrentPlayer()->getIntLevel();
+            char blockType = game->getCurrentPlayer()->getBoard().getCurrentBlock()->getBlockType();
+            game->getCurrentPlayer()->getBoard().changeCurrentAndNextBlock(game->getCurrentPlayer()->getPtrLevel()->giveMeABlock(blockType, level), game->getCurrentPlayer()->getPtrLevel()->generateBlock());
         }
     }
    
@@ -214,12 +223,13 @@ void Interpreter::runNoRandomCommand(int prefix) {
 
 void Interpreter::runRandomCommand(int prefix) {
     Player* player = game->getCurrentPlayer();
-    string filename;
-    if (player->getIntLevel() == 3 || player->getIntLevel() == 4) {
-        if (std::cin >> filename) {
-            player->getPtrLevel()->setGenerationRandom();
-        }
-    }
+    player->getPtrLevel()->setGenerationRandom();
+    // string filename;
+    // if (player->getIntLevel() == 3 || player->getIntLevel() == 4) {
+    //     if (std::cin >> filename) {
+            
+    //     }
+    // }
 }
 
 void Interpreter::runSequenceCommand(int prefix) {

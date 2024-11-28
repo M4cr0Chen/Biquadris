@@ -8,12 +8,14 @@
 #include <iostream>
 
 // Player::Player() : levelNum{0} {}
-Player::Player(bool isPlayerOne, std::string s1, std::string s2, int seed) : 
+Player::Player(bool isPlayerOne, std::string s1, std::string s2, int seed, int startLevel) : 
     seed{seed}, 
-    level{new Level0(isPlayerOne, s1, s2)}, 
+    level{nullptr}, 
     levelNum{0}, 
     s1{s1}, s2{s2}, 
-    isPlayerOne{isPlayerOne}{}
+    isPlayerOne{isPlayerOne},
+    startLevel{startLevel}
+    {}
 
 void Player::createBlock()
 {
@@ -140,7 +142,7 @@ void Player::insertStarBlock() {
 
 void Player::restartPlayer()
 {
-    levelNum = 0;
+    levelNum = startLevel;
     board = Board();
     score.resetCurrentScore();
     level = std::make_unique<Level0>(isPlayerOne, s1, s2);
@@ -149,4 +151,14 @@ void Player::restartPlayer()
 bool Player::shouldDroplvl4Block()
 {
     return levelNum == 4 && (board.getCount() % 5 == 0 && board.getCount() != 0);
+}
+
+void Player::decideSwitchSpecialAction()
+{
+    if (board.getIsBlind()) {
+        board.setBoardBlind();
+    }
+    if (board.getIsHeavy()) {
+        board.setBoardHeavy();
+    }
 }

@@ -20,8 +20,10 @@ private:
     bool isPlayerOne;
     int seed;
 
+    int startLevel;
+
 public:
-    Player(bool isPlayerOne, std::string s1, std::string s2, int seed);
+    Player(bool isPlayerOne, std::string s1, std::string s2, int seed, int startLevel);
     void createBlock();
     int dropBlock();
     void setLevel(int levelNum);
@@ -35,6 +37,8 @@ public:
     void insertStarBlock();
     void restartPlayer();
     bool shouldDroplvl4Block();
+
+    void decideSwitchSpecialAction();
 };
 
 #endif
