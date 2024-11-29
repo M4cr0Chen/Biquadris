@@ -195,7 +195,7 @@ void TextObserver::drawBoard()
 
 TextObserver::TextObserver(Game &game) : game(game)
 {
-    // game.attach(std::unique_ptr<Observer>(this));
+    //do nothing
 }
 
 TextObserver::~TextObserver() = default;

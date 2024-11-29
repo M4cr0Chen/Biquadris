@@ -15,7 +15,6 @@ Game::Game(bool graphicsOn, std::string s1, std::string s2, int seed, int startL
                                                               playerTwo{std::make_unique<Player>(false, s1, s2, seed, startLevel)},
                                                               interpreter{Interpreter(this)},
                                                               startLevel{startLevel}
-// , textObserver{std::make_unique<TextObserver>(*this)}, graphicsObserver{std::make_unique<GraphicsObserver>(*this)}
 {
     std::unique_ptr<Observer> textObserver = std::make_unique<TextObserver>(*this);
     attach(std::move(textObserver));
@@ -60,14 +59,7 @@ void Game::updateGameDisplay()
 
 void Game::switchTurn()
 {
-    // bool playerGameOver = getCurrentPlayer()->getBoard().isGameOver();
-    // std::cout << "isplayerone: " << isPlayerOneTurn << std::endl;
-    // std::cout << "isGameover: " << std::boolalpha << playerGameOver << std::endl;
-    // if (playerGameOver)
-    // {
-    //     isGameOver = true;
-    //     return;
-    // }
+    
     try
     {
         std::unique_ptr<Block> block = getCurrentPlayer()->getPtrLevel()->generateBlock();

@@ -11,10 +11,8 @@ JBlock::JBlock(int level)
 
 void JBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid)
 {
-    // setBoard(board);
+   
     gridRef = &grid;
-    // std::vector<Cell *> cells = getCells();
-    // Board *board = getBoard();
     if (playerLose())
         throw std::runtime_error("Game is over");
     setBottomLeftCell(bottomLeftCell);
@@ -82,8 +80,6 @@ bool JBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        // if (y > 7)
-        //     return false;
 
         tempCells.push_back((*gridRef)[x][y].get());         // Left
         tempCells.push_back((*gridRef)[x][y + 1].get());     // Second from left
@@ -117,16 +113,6 @@ bool JBlock::rotateClockwise()
             rotationIndex = (rotationIndex + 1) % 4;
         }
 
-        // if (isValidMove(tempCells))
-        // {
-        //     for (Cell *cell : tempCells)
-        //     {
-        //         cell->setCellType(getBlockType());
-        //     }
-        //     bottomLeftCell = tempCells[0];
-        //     cells = tempCells;
-        // }
-        // return false;
     }
 
     if (isValidMove(tempCells))
@@ -135,7 +121,7 @@ bool JBlock::rotateClockwise()
         {
             cell->setCellType(getBlockType());
         }
-        // bottomLeftCell = tempCells[0];
+      
         cells = tempCells;
         return true;
     }

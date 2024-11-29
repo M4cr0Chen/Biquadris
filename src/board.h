@@ -14,16 +14,10 @@ class Board
 {
 private:
     std::vector<std::vector<std::unique_ptr<Cell>>> grid;
-    // std::vector<std::unique_ptr<Block>> activeBlocks;
 
     std::unique_ptr<Block> currentBlock;
     std::unique_ptr<Block> nextBlock;
     std::unique_ptr<Block> tempBlock;
-
-    // char nextBlockType;
-
-    // std::vector<Cell *> getMoveProjectedCells(const Block *block, char dir) const;
-    // std::vector<Cell *> getRotateProjectedCells(const Block *block, char dir) const;
 
     bool isHeavy;
     bool isBlind;
@@ -32,7 +26,6 @@ private:
     int count;
 
 public:
-    // Testing purpose
     std::vector<std::unique_ptr<Block>> activeBlocks;
     Board();
     Cell *getCellAt(int x, int y);

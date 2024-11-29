@@ -7,7 +7,7 @@
 #include "level4.h"
 #include <iostream>
 
-// Player::Player() : levelNum{0} {}
+
 Player::Player(bool isPlayerOne, std::string s1, std::string s2, int seed, int startLevel) : 
     seed{seed}, 
     level{nullptr}, 

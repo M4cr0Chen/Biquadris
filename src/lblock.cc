@@ -11,10 +11,7 @@ LBlock::LBlock(int level)
 
 void LBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid)
 {
-    // setBoard(board);
     gridRef = &grid;
-    // std::vector<Cell *> cells = getCells();
-    // Board *board = getBoard();
     if (playerLose())
         throw std::runtime_error("Game is over");
     setBottomLeftCell(bottomLeftCell);
@@ -40,8 +37,6 @@ bool LBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        // if (x > 3)
-        //     return false;
 
         tempCells.push_back((*gridRef)[x][y].get());     // Bottom
         tempCells.push_back((*gridRef)[x][y + 1].get()); // Second from bottom
@@ -82,8 +77,6 @@ bool LBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        // if (y > 7)
-        //     return false;
 
         tempCells.push_back((*gridRef)[x][y + 1].get());     // Left
         tempCells.push_back((*gridRef)[x - 1][y + 1].get()); // Second from left
@@ -117,16 +110,7 @@ bool LBlock::rotateClockwise()
             rotationIndex = (rotationIndex + 1) % 4;
         }
 
-        // if (isValidMove(tempCells))
-        // {
-        //     for (Cell *cell : tempCells)
-        //     {
-        //         cell->setCellType(getBlockType());
-        //     }
-        //     bottomLeftCell = tempCells[0];
-        //     cells = tempCells;
-        // }
-        // return false;
+       
     }
 
     if (isValidMove(tempCells))
@@ -135,7 +119,6 @@ bool LBlock::rotateClockwise()
         {
             cell->setCellType(getBlockType());
         }
-        // bottomLeftCell = tempCells[0];
         cells = tempCells;
         return true;
     }
@@ -144,7 +127,7 @@ bool LBlock::rotateClockwise()
 
 bool LBlock::rotateCounterClockwise()
 {
-    // Three clockwise rotations = one counterclockwise rotation
+   
     bool success = true;
     for (int i = 0; i < 3 && success; i++)
     {

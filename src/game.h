@@ -23,8 +23,6 @@ private:
     std::unique_ptr<Player> playerOne;
     std::unique_ptr<Player> playerTwo;
 
-    // std::unique_ptr<TextObserver> textObserver;
-    // std::unique_ptr<GraphicsObserver> graphicsObserver;
 
     Interpreter interpreter;
 

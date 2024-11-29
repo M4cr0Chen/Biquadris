@@ -11,10 +11,8 @@ ZBlock::ZBlock(int level)
 
 void ZBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid)
 {
-    // setBoard(board);
+    
     gridRef = &grid;
-    // std::vector<Cell *> cells = getCells();
-    // Board *board = getBoard();
     if (playerLose())
         throw std::runtime_error("Game is over");
     setBottomLeftCell(bottomLeftCell);

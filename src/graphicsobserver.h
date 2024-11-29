@@ -13,8 +13,6 @@ class GraphicsObserver : public Observer
 private:
     Game &game;
     std::unique_ptr<Xwindow> xw;
-    // Player * playerOne = game.getPlayerOne();
-    // Player * playerTwo = game.getPlayerTwo();
     
 
 public:

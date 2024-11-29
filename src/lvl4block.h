@@ -6,7 +6,6 @@
 class LVL4Block : public Block
 {
 public:
-    // std::vector<std::vector<std::unique_ptr<Cell>>> *gridRef;
     LVL4Block(int level);
     void init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid) override;
     bool rotateClockwise() override;

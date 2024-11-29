@@ -73,9 +73,7 @@ void Interpreter::runLeftCommand(int prefix) {
     // Then apply level-based drops
     for (int i = 0; i < down; i++) {
         if (!currentBlock->moveDown()) {
-            // currentBlock->drop();
-            // game->switchTurn();
-            // return;
+            //do nothing
         }
     }
 
@@ -106,9 +104,7 @@ void Interpreter::runRightCommand(int prefix) {
     // Then apply level-based drops
     for (int i = 0; i < down; i++) {
         if (!currentBlock->moveDown()) {
-            // currentBlock->drop();
-            // game->switchTurn();
-            // return;
+            // do nothing
         }
     }
 
@@ -168,7 +164,6 @@ void Interpreter::runDropCommand(int prefix) {
             return;
         }
         int linesCleared = game->getCurrentPlayer()->dropBlock();
-        // game->updateGameDisplay();
         if (linesCleared >= 2) {
             requestSpecialAction();
         }
@@ -224,12 +219,6 @@ void Interpreter::runNoRandomCommand(int prefix) {
 void Interpreter::runRandomCommand(int prefix) {
     Player* player = game->getCurrentPlayer();
     player->getPtrLevel()->setGenerationRandom();
-    // string filename;
-    // if (player->getIntLevel() == 3 || player->getIntLevel() == 4) {
-    //     if (std::cin >> filename) {
-            
-    //     }
-    // }
 }
 
 void Interpreter::runSequenceCommand(int prefix) {

@@ -11,10 +11,7 @@ SBlock::SBlock(int level)
 
 void SBlock::init(Cell *bottomLeftCell, std::vector<std::vector<std::unique_ptr<Cell>>> &grid)
 {
-    // setBoard(board);
     gridRef = &grid;
-    // std::vector<Cell *> cells = getCells();
-    // Board *board = getBoard();
     if (playerLose())
         throw std::runtime_error("Game is over");
     setBottomLeftCell(bottomLeftCell);
@@ -40,8 +37,7 @@ bool SBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        // if (y > 3)
-        //     return false;
+      
 
         tempCells.push_back((*gridRef)[x][y + 1].get());     // Top
         tempCells.push_back((*gridRef)[x - 1][y + 1].get()); // Bottom
@@ -82,7 +78,7 @@ bool SBlock::rotateClockwise()
         {
             cell->setCellType(getBlockType());
         }
-        // bottomLeftCell = tempCells[0];
+
         cells = tempCells;
         return true;
     }

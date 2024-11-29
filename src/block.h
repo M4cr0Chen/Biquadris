@@ -38,7 +38,6 @@ public:
     void setBlockCellType(char type);
     Board *getBoard() const;
     void setBoard(Board *board);
-    // std::vector<Cell *> getProjectedCells(char dir) const;
     char getBlockType() const;
     void setBlockType(char type);
     int getLevel();

@@ -17,8 +17,7 @@ int MARGIN = 10;
 GraphicsObserver::GraphicsObserver(Game &game)
     : game(game), xw{std::make_unique<Xwindow>(WINDOW_WIDTH, WINDOW_HEIGHT)}
 {
-    // Attach this observer to the game
-    // game.attach(this);
+
 }
 
 GraphicsObserver::~GraphicsObserver() = default;

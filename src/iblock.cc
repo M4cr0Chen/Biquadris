@@ -40,9 +40,6 @@ bool IBlock::rotateClockwise()
         int x = bottomLeftCell->getX();
         int y = bottomLeftCell->getY();
 
-        // if (x < 3)
-        //     return false;
-
         tempCells.push_back((*gridRef)[x][y].get());     // Bottom
         tempCells.push_back((*gridRef)[x - 1][y].get()); // Second from bottom
         tempCells.push_back((*gridRef)[x - 2][y].get()); // Second from top
@@ -83,7 +80,6 @@ bool IBlock::rotateClockwise()
         {
             cell->setCellType(getBlockType());
         }
-        // bottomLeftCell = tempCells[0];
         cells = tempCells;
         return true;
     }
