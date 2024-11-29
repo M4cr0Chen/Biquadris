@@ -79,7 +79,7 @@ void TextObserver::printNextBlock()
         std::cout << "J          ";
         break;
     case 'L':
-        std::cout << "   L       ";
+        std::cout << "  L        ";
         break;
     case 'O':
         std::cout << "OO         ";
@@ -106,7 +106,7 @@ void TextObserver::printNextBlock()
         std::cout << "J          ";
         break;
     case 'L':
-        std::cout << "   L       ";
+        std::cout << "  L        ";
         break;
     case 'O':
         std::cout << "OO         ";
@@ -147,6 +147,35 @@ void TextObserver::printNextBlock()
         std::cout << " T         ";
         break;
     }
+
+    std::cout << "       ";
+
+    switch (playerTwoNextBlockType)
+    {
+    case 'I':
+        std::cout << "IIII       ";
+        break;
+    case 'J':
+        std::cout << "JJJ        ";
+        break;
+    case 'L':
+        std::cout << "LLL        ";
+        break;
+    case 'O':
+        std::cout << "OO         ";
+        break;
+    case 'S':
+        std::cout << "SS         ";
+        break;
+    case 'Z':
+        std::cout << " ZZ        ";
+        break;
+    case 'T':
+        std::cout << " T         ";
+        break;
+    }
+
+    std::cout << std::endl;
 }
 
 void TextObserver::drawBoard()

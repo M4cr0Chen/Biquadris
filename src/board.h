@@ -20,10 +20,10 @@ private:
     std::unique_ptr<Block> nextBlock;
     std::unique_ptr<Block> tempBlock;
 
-    char nextBlockType;
+    // char nextBlockType;
 
-    std::vector<Cell *> getMoveProjectedCells(const Block *block, char dir) const;
-    std::vector<Cell *> getRotateProjectedCells(const Block *block, char dir) const;
+    // std::vector<Cell *> getMoveProjectedCells(const Block *block, char dir) const;
+    // std::vector<Cell *> getRotateProjectedCells(const Block *block, char dir) const;
 
     bool isHeavy;
     bool isBlind;

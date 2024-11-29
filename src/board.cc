@@ -1,7 +1,7 @@
 #include "board.h"
 #include <iostream>
 
-Board::Board() : nextBlockType{' '}, currentBlock{nullptr}, nextBlock{nullptr}, level{0}, isHeavy{false}, isBlind{false}
+Board::Board() : currentBlock{nullptr}, nextBlock{nullptr}, level{0}, isHeavy{false}, isBlind{false}
 {
     grid.resize(18);
     for (int i = 0; i < 18; i++)
@@ -21,7 +21,7 @@ Cell *Board::getCellAt(int x, int y)
 
 char Board::getNextBlockType()
 {
-    return nextBlockType;
+    return nextBlock.get()->getBlockType();
 }
 
 void Board::addBlock(std::unique_ptr<Block> newblock)

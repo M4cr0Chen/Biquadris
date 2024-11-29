@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
     std::string s1 = "sequence1.txt", s2 = "sequence2.txt";
     int seed = 123;
-    bool graphicsOn;
+    bool graphicsOn = true;
     int startLevel = 0;
 
     for (int i = 0; i < argc; i++) {
