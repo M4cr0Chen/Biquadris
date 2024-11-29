@@ -19,7 +19,6 @@ Player::Player(bool isPlayerOne, std::string s1, std::string s2, int seed, int s
 
 void Player::createBlock()
 {
-    std::cout << "levelnum: " << levelNum << std::endl;
     std::unique_ptr<Block> block = level->generateBlock();
     board.addBlock(std::move(block));
 }
@@ -29,7 +28,6 @@ int Player::dropBlock()
     int numLine = 0;
     int dropScore = 0;
     int lineScore = 0;
-    std::cout << "current block is null: " << (getBoard().getCurrentBlock() == nullptr) << std::endl;
     if (getBoard().getCurrentBlock() != nullptr)
     {
         board.dropBlock(&numLine, &dropScore);
@@ -40,7 +38,6 @@ int Player::dropBlock()
         }
 
         score.addToCurrentScore(dropScore);
-        std::cout << "dropscore: " << dropScore << ", " << "linescore: " << lineScore << std::endl;
         score.addToCurrentScore(lineScore);
 
         // numLine = 0;
@@ -58,7 +55,6 @@ int Player::dropBlock()
         }
 
         score.addToCurrentScore(dropScore);
-        std::cout << "dropSTARscore: " << dropScore << ", " << "linescore: " << lineScore << std::endl;
         score.addToCurrentScore(lineScore);
     }
 
@@ -130,7 +126,6 @@ Board &Player::getBoard()
 
 void Player::replaceUndroppedBlock(char blockType)
 {
-    std::cout << "levelnum: " << levelNum << std::endl;
     std::unique_ptr<Block> block = level->giveMeABlock(blockType, levelNum);
     board.changeBlock(std::move(block));
 }

@@ -14,7 +14,6 @@ int Block::updateBlock()
 
     if (cells.empty())
     {
-        std::cout << "block score: " << std::pow(level + 1, 2) << std::endl;
         return std::pow(level + 1, 2);
     }
 
@@ -209,7 +208,6 @@ bool Block::moveDown()
 
     if (isValidMove(newCells))
     {
-        std::cout << "move down is valid?" << isValidMove(newCells) << std::endl;
         for (Cell *cell : newCells)
         {
             cell->setCellType(getBlockType());

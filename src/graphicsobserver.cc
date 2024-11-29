@@ -66,7 +66,7 @@ void GraphicsObserver::drawPlayerBoard(Player *player, int xOffset, int yOffset)
             int y = yOffset + row * CELL_SIZE;
 
             // Draw the segmentation border in white
-            xw->fillRectangle(x, y, CELL_SIZE, CELL_SIZE, Xwindow::White);
+            xw->fillRectangle(x, y, CELL_SIZE, CELL_SIZE, Xwindow::Black);
 
             // Draw the cell slightly smaller to reveal the border
             xw->fillRectangle(x + 1, y + 1, CELL_SIZE - 2, CELL_SIZE - 2, color);
@@ -172,19 +172,19 @@ void GraphicsObserver::drawBoard()
     int playerOneXOffset = MARGIN;
     int playerOneYOffset = MARGIN;
 
-    drawLevel(game.getPlayerOne(), playerOneXOffset, playerOneYOffset);
-    drawScore(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + 20);
-    drawHighScore(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + 40);
+    drawLevel(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + 20);
+    drawScore(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + 40);
+    drawHighScore(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + 60);
     drawPlayerBoard(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + INFO_HEIGHT);
-    drawNextBlock(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + INFO_HEIGHT + BOARD_HEIGHT * CELL_SIZE + MARGIN);
+    drawNextBlock(game.getPlayerOne(), playerOneXOffset, playerOneYOffset + INFO_HEIGHT + BOARD_HEIGHT * CELL_SIZE + MARGIN + 20);
 
     // Draw Player Two's components
     int playerTwoXOffset = WINDOW_WIDTH / 2 + MARGIN;
     int playerTwoYOffset = MARGIN;
 
-    drawLevel(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset);
-    drawScore(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + 20);
-    drawHighScore(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + 40);
+    drawLevel(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + 20);
+    drawScore(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + 40);
+    drawHighScore(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + 60);
     drawPlayerBoard(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + INFO_HEIGHT);
-    drawNextBlock(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + INFO_HEIGHT + BOARD_HEIGHT * CELL_SIZE + MARGIN);
+    drawNextBlock(game.getPlayerTwo(), playerTwoXOffset, playerTwoYOffset + INFO_HEIGHT + BOARD_HEIGHT * CELL_SIZE + MARGIN + 20);
 }

@@ -82,7 +82,6 @@ int Board::updateActiveBlocks()
     int score = 0;
     for (int i = activeBlocks.size() - 1; i >= 0; i--)
     {
-        std::cout << "activeBlocks size: " << activeBlocks.size() << std::endl;
         int blockScore = 0;
         blockScore = activeBlocks[i]->updateBlock();
 
@@ -141,7 +140,6 @@ void Board::dropBlock(int *numLine, int *dropScore)
 
     currentBlock->drop();
     activeBlocks.push_back(std::move(currentBlock));
-    std::cout << "activeBlocks size before clear: " << activeBlocks.size() << std::endl;
 
     // clearline logic
     int blockRow = 17;
@@ -163,8 +161,6 @@ void Board::dropBlock(int *numLine, int *dropScore)
             blockRow--;
         }
     }
-
-    std::cout << "activeBlocks size after clear: " << activeBlocks.size() << std::endl;
 
     if (level == 4)
     {

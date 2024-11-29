@@ -60,8 +60,6 @@ void Interpreter::runLeftCommand(int prefix) {
     Block * currentBlock = game->getCurrentPlayer()->getBoard().getCurrentBlock();
     int down = linesToDrop(game->getCurrentPlayer()->getIntLevel());
     int downHeavy = game->getCurrentPlayer()->getBoard().getHeavyInt();
-    std::cout << "curplayer level: " << game->getCurrentPlayer()->getIntLevel() << "curplayer down: " << down 
-    << "curplayer downHeavy: " << downHeavy << std::endl;
 
     // First do all horizontal movements
     for (int i = 0; i < prefix; i++) {
@@ -91,8 +89,6 @@ void Interpreter::runRightCommand(int prefix) {
     Block * currentBlock = game->getCurrentPlayer()->getBoard().getCurrentBlock();
     int down = linesToDrop(game->getCurrentPlayer()->getIntLevel());
     int downHeavy = game->getCurrentPlayer()->getBoard().getHeavyInt();
-    std::cout << "curplayer level: " << game->getCurrentPlayer()->getIntLevel() << "curplayer down: " << down 
-    << "curplayer downHeavy: " << downHeavy << std::endl;
     
     // First do all horizontal movements
     for (int i = 0; i < prefix; i++) {
@@ -110,9 +106,7 @@ void Interpreter::runRightCommand(int prefix) {
 
     // Finally apply heavy drops
     for (int i = 0; i < downHeavy; i++) {
-        std::cout << "into heavy drop loop" << std::endl;
         if (!currentBlock->moveDown()) {
-            std::cout << "dropping heavily" << std::endl;
             game->getCurrentPlayer()->dropBlock();
             game->switchTurn();
             return;
@@ -167,8 +161,6 @@ void Interpreter::runDropCommand(int prefix) {
         if (linesCleared >= 2) {
             requestSpecialAction();
         }
-        std::cout << "should drop star: " << game->getCurrentPlayer()->shouldDroplvl4Block() << std::endl;
-        std::cout << "isheavy: " << game->getCurrentPlayer()->getBoard().getIsHeavy() << std::endl;
         if (game->getCurrentPlayer()->shouldDroplvl4Block()) { // level4 extra block
             game->getCurrentPlayer()->insertStarBlock();
             game->getCurrentPlayer()->dropBlock();
@@ -245,9 +237,9 @@ void Interpreter::runRenameCommand() {
 }
 
 void Interpreter::requestSpecialAction(){
-    cout << "Enter a special action" << endl;
     string specialAction;
     Player* opponent = game->getNonCurrentPlayer();
+    cout << "Choose a Special Action (blind, heavy, force):" << endl;
     while (cin >> specialAction) {
         if (specialAction == "blind") {
             opponent->getBoard().setBoardBlind();
@@ -257,15 +249,17 @@ void Interpreter::requestSpecialAction(){
             break;
         } else if (specialAction == "force") {
             char block;
-            if (cin >> block){
+            cout << "Enter the block you want to force your opponent to hold:" << endl;
+            while (cin >> block){
                 if(block == 'I' || block == 'J' || block == 'L'|| block == 'O' || block == 'S' || block == 'T' || block == 'Z') {
                     opponent->replaceUndroppedBlock(block);
+                    break;
                 }
-                cout << "bad letter" << endl;
+                cout << "Letter invalid, please enter the block you want to force again" << endl;
             }
             break;
         } else {
-            cout << "bad special action" << endl;
+            cout << "Special action invalid, please enter the special action again" << endl;
         }
     }
 }

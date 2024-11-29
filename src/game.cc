@@ -64,10 +64,8 @@ void Game::switchTurn()
     {
         std::unique_ptr<Block> block = getCurrentPlayer()->getPtrLevel()->generateBlock();
         getCurrentPlayer()->getBoard().addBlock(std::move(block));
-        std::cout << "isplayerone before switch: " << isPlayerOneTurn << std::endl;
         getCurrentPlayer()->decideSwitchSpecialAction();
         isPlayerOneTurn = !isPlayerOneTurn;
-        std::cout << "isplayerone after switch: " << isPlayerOneTurn << std::endl;
     }
     catch (const std::exception &e)
     {
