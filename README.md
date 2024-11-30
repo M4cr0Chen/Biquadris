@@ -3,9 +3,7 @@
 ## Introduction
 This project is a C++ implementation of a Tetris-like game featuring both text-based and graphical interfaces. The game utilizes object-oriented design principles, including the Observer pattern, to separate game logic from presentation. It emphasizes low coupling and high cohesion to ensure maintainability, scalability, and resilience to change.
 
-![Text Display](https://raw.githubusercontent.com/M4cr0Chen/MyPic/refs/heads/main/img/202411300000440.png)
-![Graphical Display](https://raw.githubusercontent.com/M4cr0Chen/MyPic/refs/heads/main/img/202411300001496.png)
-
+![Text Display]([https://raw.githubusercontent.com/M4cr0Chen/MyPic/refs/heads/main/img/202411300000440.png](https://raw.githubusercontent.com/M4cr0Chen/MyPic/refs/heads/main/img/202411300027924.png))
 ## Features
 Text-Based Interface: Play the game using a terminal interface, suitable for environments without graphical support.
 Graphical Interface: Enjoy a graphical version of the game using the X11 library for rendering.
