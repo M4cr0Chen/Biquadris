@@ -3,6 +3,9 @@
 ## Introduction
 This project is a C++ implementation of a Tetris-like game featuring both text-based and graphical interfaces. The game utilizes object-oriented design principles, including the Observer pattern, to separate game logic from presentation. It emphasizes low coupling and high cohesion to ensure maintainability, scalability, and resilience to change.
 
+![Text Display](https://raw.githubusercontent.com/M4cr0Chen/MyPic/refs/heads/main/img/202411300000440.png)
+![Graphical Display](https://raw.githubusercontent.com/M4cr0Chen/MyPic/refs/heads/main/img/202411300001496.png)
+
 ## Features
 Text-Based Interface: Play the game using a terminal interface, suitable for environments without graphical support.
 Graphical Interface: Enjoy a graphical version of the game using the X11 library for rendering.
@@ -84,25 +87,35 @@ make
 -scriptfile2 [file]: Specify a script file for player two.
 
 ## Controls
+Movements, Rotations, Dropping, and Level Controls can be executed with a multiplier, for example:
+```
+4levelup
+```
+The above command increases the level of the current player by 4.
+Insufficient commands can be interpreted, for example.
+```
+countercl
+```
+Will be interpreted as counterclockwise and executed.
 ### Movement:
-left: Move the block left.
-right: Move the block right.
-down: Move the block down.
+- left: Move the block left.
+- right: Move the block right.
+- down: Move the block down.
 
 ### Rotation:
-clockwise or cw: Rotate the block clockwise.
-counterclockwise or ccw: Rotate the block counterclockwise.
+- clockwise or cw: Rotate the block clockwise.
+- counterclockwise or ccw: Rotate the block counterclockwise.
 
 ### Dropping:
-drop: Drop the block immediately.
+- drop: Drop the block immediately.
 
 ### Level Control:
-levelup: Increase the level.
-leveldown: Decrease the level.
+- levelup: Increase the level.
+- leveldown: Decrease the level.
 
 ### Special Commands:
-rename [old] [new]: Rename an existing command.
-macro [name] [command sequence]: Define a macro command.
+- rename [old] [new]: Rename an existing command.
+- macro [name] [command sequence]: Define a macro command.
 
 ### Gameplay
 - The game starts with an empty board and a sequence of blocks.
