@@ -47,11 +47,11 @@ Windows: Use an X11 server like Xming and compile with Cygwin or WSL.
 Clone the Repository:
 
 ```
-git clone https://github.com/yourusername/tetris-game.git
-cd tetris-game
-Install Dependencies:
+git clone https://github.com/M4cr0Chen/Biquadris.git
+cd Biquadrs/src
 ```
 
+## Install Dependencies:
 ### Linux:
 
 ```
@@ -125,7 +125,7 @@ Will be interpreted as counterclockwise and executed.
 
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the Apache 2.0 License. See the LICENSE file for details.
 
 ## Acknowledgments
 X11 Library: Used for rendering the graphical interface.
